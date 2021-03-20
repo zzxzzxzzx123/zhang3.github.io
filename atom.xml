@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-03-20T07:58:14.410Z</updated>
+    <updated>2021-03-20T08:02:23.296Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -26,12 +26,13 @@
 ]]></content>
     </entry>
     <entry>
-        <title type="html"><![CDATA[你好呀]]></title>
+        <title type="html"><![CDATA[写给自己]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/ni-hao-ya/</id>
         <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/ni-hao-ya/">
         </link>
         <updated>2021-03-20T06:56:12.000Z</updated>
-        <content type="html"><![CDATA[<p>2021.3.20</p>
+        <content type="html"><![CDATA[<p>我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀<br>
+这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。</p>
 ]]></content>
     </entry>
     <entry>
