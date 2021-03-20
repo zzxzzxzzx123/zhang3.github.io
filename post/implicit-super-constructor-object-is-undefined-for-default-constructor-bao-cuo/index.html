@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>创建GitHub博客主页(仓库主页)绑定域名问题There isn&#39;t a GitHub Pages site here | 张卓欣的学习记录</title>
+<title>Implicit super constructor Object() is undefined for default constructor报错 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,11 +18,7 @@
 
 
 
-    <meta name="description" content="
-​	出现这个404 的错误，一般表示你的域名已经能够解析到了XXX.github.io，但是你的github还需要进一步配置。
-​    首先，我们需要先进入到你的项目中去：
-
-点击settings进行我们的仓库配置，之后找到GitHub..." />
+    <meta name="description" content="今天我在git clone一个已经完成的作业导入eclipse时发现编译器报错。控制台显示Implicit super constructor Object() is undefined for default constructor报错。..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -98,26 +94,22 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">创建GitHub博客主页(仓库主页)绑定域名问题There isn&#39;t a GitHub Pages site here</h2>
+            <h2 class="post-title">Implicit super constructor Object() is undefined for default constructor报错</h2>
             <div class="post-date">2021-03-20</div>
             
             <div class="post-content" v-pre>
-              <figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227027502.png" alt="" loading="lazy"></figure>
-<p>​	出现这个404 的错误，一般表示你的域名已经能够解析到了XXX.github.io，但是你的github还需要进一步配置。</p>
-<p>​    首先，我们需要先进入到你的项目中去：</p>
-<figure data-type="image" tabindex="2"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227040021.png" alt="" loading="lazy"></figure>
-<p>点击settings进行我们的仓库配置，之后找到GitHubPages进行页面的配置：</p>
-<p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227050732.png" alt="" loading="lazy"><br>
-点击Your site is  published at右边的蓝色网址就是博客所在的主页啦😄</p>
+              <p>今天我在git clone一个已经完成的作业导入eclipse时发现编译器报错。控制台显示Implicit super constructor Object() is undefined for default constructor报错。😱</p>
+<p>我在百度后才知道这是个小问题，为了让自己能长个记性我决定把这个问题写下来让自己能印象深刻。</p>
+<p>解决方案：把java的类库加载进去，在工程上右键选择属性-&gt;Java Build Path的Libraries-&gt;Add Library选择JRE System Library-&gt;点击Next-&gt;选择Execution environment并选择jre版本或workspace default jre(有显示的版本不是都能选的的，只有默认自带的jre和安装绑定过的选了才能起作用)-&gt;点击Finish。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/ni-hao-ya/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/chuang-jian-github-bo-ke-zhu-ye-cang-ku-zhu-ye-bang-ding-yu-ming-wen-ti-there-isnt-a-github-pages-site-here/">
                   <h3 class="post-title">
-                    写给自己
+                    创建GitHub博客主页(仓库主页)绑定域名问题There isn&#39;t a GitHub Pages site here
                   </h3>
                 </a>
               </div>
