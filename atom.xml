@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-03-23T14:12:03.404Z</updated>
+    <updated>2021-03-23T14:12:38.718Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -115,8 +115,7 @@ wx.playVoice（）</p>
         <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/ru-he-ying-dui-gao-bing-fa/">
         </link>
         <updated>2021-03-20T08:59:00.000Z</updated>
-        <content type="html"><![CDATA[<p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616230768045.png" alt="" loading="lazy"><br>
-高并发?</p>
+        <content type="html"><![CDATA[<p>高并发?</p>
 <p>高并发是互联网分布式系统架构设计中必须考虑的因素之一，它通常是指，通过设计保证系统能够同时并行处理很多请求。</p>
 <p>高并发相关常用的一些指标有响应时间（Response Time），吞吐量（Throughput），每秒查询率QPS（Query Per Second），并发用户数等。</p>
 <p>响应时间：系统对请求做出响应的时间。例如系统处理一个HTTP请求需要200ms，这个200ms就是系统的响应时间。</p>
