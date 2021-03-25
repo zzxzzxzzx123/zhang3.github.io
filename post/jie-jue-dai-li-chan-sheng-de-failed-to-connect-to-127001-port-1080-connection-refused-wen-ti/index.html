@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>HTTP与HTTPS的区别以及如何实现安全性 | 张卓欣的学习记录</title>
+<title>解决代理产生的Failed to connect to 127.0.0.1 port 1080 Connection refused问题 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,7 +18,14 @@
 
 
 
-    <meta name="description" content="http协议传输的数据都是未加密的，也就是明文的，因此使用http协议传输隐私信息非常不安全。为了保证这些隐私数据能加密传输，于是网景公司设计了ssl(Secure Sockets Layer)协议用于对http协议传输的数据进行加密，从而..." />
+    <meta name="description" content="今天在git clone项目时发现git拒绝连接，我在重启了好几次电脑仍然无法解决。后面才意识到是使用了proxy代理，所以要解决问题，还是要取消代理。
+方式一：通过git取消代理设置
+
+方式二：
+
+方式三：
+
+把上面出现的所有使用代理的协..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -97,28 +104,30 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">HTTP与HTTPS的区别以及如何实现安全性</h2>
-            <div class="post-date">2021-03-20</div>
+            <h2 class="post-title">解决代理产生的Failed to connect to 127.0.0.1 port 1080 Connection refused问题</h2>
+            <div class="post-date">2021-03-25</div>
+            
+              <div class="feature-container" style="background-image: url('https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/jie-jue-dai-li-chan-sheng-de-failed-to-connect-to-127001-port-1080-connection-refused-wen-ti.jpeg')">
+              </div>
             
             <div class="post-content" v-pre>
-              <p>http协议传输的数据都是未加密的，也就是明文的，因此使用http协议传输隐私信息非常不安全。为了保证这些隐私数据能加密传输，于是网景公司设计了ssl(Secure Sockets Layer)协议用于对http协议传输的数据进行加密，从而就诞生了https。<br>
-简单来说，https协议是由ssl+http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全。<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616230227669.png" alt="" loading="lazy"></p>
-<p>1.Url开头：HTTP 的 URL 以 HTTP:// 开头，而 HTTPS 的 URL 以 HTTPs:// 开头；</p>
-<p>2.安全性：HTTP 是不安全的，而 HTTPS 是安全的。HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
-<p>3.传输效率：传输效率上 HTTP 要高于 HTTPS ，因为http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</p>
-<p>4.费用：HTTP 无需证书，而 HTTPS 必需要认证证书；相比于 HTTP 不需要证书来说，使用 HTTPS 需要证书，申请证书是要费用的，HTTPS 这笔费用是无法避免的</p>
-<p>5.端口：HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-<p>6.防劫持性：HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题。</p>
+              <p>今天在git clone项目时发现git拒绝连接，我在重启了好几次电脑仍然无法解决。后面才意识到是使用了proxy代理，所以要解决问题，还是要取消代理。</p>
+<p>方式一：通过git取消代理设置<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679448569.png" alt="" loading="lazy"></p>
+<p>方式二：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679475812.png" alt="" loading="lazy"></p>
+<p>方式三：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679507357.png" alt="" loading="lazy"></p>
+<p>把上面出现的所有使用代理的协议，全部都取消掉，然后再重新进行clone就解决问题了😁</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/github-wang-zhan-wu-fa-jin-ru/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-ru-men-gai-shu/">
                   <h3 class="post-title">
-                    github网站无法进入如何解决
+                    微信小程序入门概述
                   </h3>
                 </a>
               </div>

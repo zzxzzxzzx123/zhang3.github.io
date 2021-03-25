@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-03-25T13:28:20.528Z</updated>
+    <updated>2021-03-25T13:39:50.753Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,22 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[解决代理产生的Failed to connect to 127.0.0.1 port 1080 Connection refused问题]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/jie-jue-dai-li-chan-sheng-de-failed-to-connect-to-127001-port-1080-connection-refused-wen-ti/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/jie-jue-dai-li-chan-sheng-de-failed-to-connect-to-127001-port-1080-connection-refused-wen-ti/">
+        </link>
+        <updated>2021-03-25T13:30:55.000Z</updated>
+        <content type="html"><![CDATA[<p>今天在git clone项目时发现git拒绝连接，我在重启了好几次电脑仍然无法解决。后面才意识到是使用了proxy代理，所以要解决问题，还是要取消代理。</p>
+<p>方式一：通过git取消代理设置<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679448569.png" alt="" loading="lazy"></p>
+<p>方式二：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679475812.png" alt="" loading="lazy"></p>
+<p>方式三：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679507357.png" alt="" loading="lazy"></p>
+<p>把上面出现的所有使用代理的协议，全部都取消掉，然后再重新进行clone就解决问题了😁</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[微信小程序入门概述]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-ru-men-gai-shu/</id>
