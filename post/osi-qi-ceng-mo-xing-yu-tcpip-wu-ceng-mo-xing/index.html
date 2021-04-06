@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>写给自己 | 张卓欣的学习记录</title>
+<title>OSI七层模型与TCP/IP五层模型 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,9 +18,11 @@
 
 
 
-    <meta name="description" content="我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。
-" />
+    <meta name="description" content="1.OSI模型
+OSI全称为开放系统互联参考模型，于1978年被国际标准化组织（ISO）提出。OSI有七层，从低到高依次为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。
+
+&lt;1&gt;    应用层
+OSI参考模型中最靠..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -99,21 +101,44 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">写给自己</h2>
-            <div class="post-date">2021-03-18</div>
+            <h2 class="post-title">OSI七层模型与TCP/IP五层模型</h2>
+            <div class="post-date">2021-04-06</div>
             
             <div class="post-content" v-pre>
-              <p>我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀<br>
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。</p>
+              <p>1.OSI模型<br>
+OSI全称为开放系统互联参考模型，于1978年被国际标准化组织（ISO）提出。OSI有七层，从低到高依次为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617693646762.png" alt="" loading="lazy"><br>
+&lt;1&gt;    应用层<br>
+OSI参考模型中最靠近用户的一层，是为计算机用户提供应用接口，也为用户直接提供各种网络服务。我们常见应用层的网络服务协议有：HTTP，HTTPS，FTP，POP3、SMTP等。<br>
+&lt;2&gt;    表示层<br>
+表示数据转换<br>
+格式有，JPEG、ASCll、EBCDIC、加密格式等<br>
+&lt;3&gt;    会话层<br>
+建立、管理、终止会话。<br>
+&lt;4&gt;   传输层<br>
+定义传输数据的协议端口号，以及流控和差错校验。<br>
+协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层<br>
+&lt;5&gt;   网络层<br>
+进行逻辑地址寻址，实现不同网络之间的路径选择。<br>
+协议有：ICMP IGMP IP（IPV4 IPV6）<br>
+&lt;6&gt;   数据链路层<br>
+建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
+将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。<br>
+&lt;7&gt;  物理层<br>
+建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
+将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。</p>
+<p>2.TCP/IP协议<br>
+TCP/IP协议是个协议簇，它包含了多种协议。ISO/OSI模型、TCP/IP的分层模型及协议的对应如图<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617694045715.png" alt="" loading="lazy"></p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/hello-gridea/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/the-prefix-context-for-element-contextcomponent-scan-is-not-bound/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    The prefix &#34;context&#34; for element &#34;context:component-scan&#34; is not bound.
                   </h3>
                 </a>
               </div>

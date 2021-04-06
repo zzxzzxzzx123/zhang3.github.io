@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-03-29T14:38:18.633Z</updated>
+    <updated>2021-04-06T07:27:40.060Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,39 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[OSI七层模型与TCP/IP五层模型]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/">
+        </link>
+        <updated>2021-04-06T07:13:39.000Z</updated>
+        <content type="html"><![CDATA[<p>1.OSI模型<br>
+OSI全称为开放系统互联参考模型，于1978年被国际标准化组织（ISO）提出。OSI有七层，从低到高依次为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617693646762.png" alt="" loading="lazy"><br>
+&lt;1&gt;    应用层<br>
+OSI参考模型中最靠近用户的一层，是为计算机用户提供应用接口，也为用户直接提供各种网络服务。我们常见应用层的网络服务协议有：HTTP，HTTPS，FTP，POP3、SMTP等。<br>
+&lt;2&gt;    表示层<br>
+表示数据转换<br>
+格式有，JPEG、ASCll、EBCDIC、加密格式等<br>
+&lt;3&gt;    会话层<br>
+建立、管理、终止会话。<br>
+&lt;4&gt;   传输层<br>
+定义传输数据的协议端口号，以及流控和差错校验。<br>
+协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层<br>
+&lt;5&gt;   网络层<br>
+进行逻辑地址寻址，实现不同网络之间的路径选择。<br>
+协议有：ICMP IGMP IP（IPV4 IPV6）<br>
+&lt;6&gt;   数据链路层<br>
+建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
+将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。<br>
+&lt;7&gt;  物理层<br>
+建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
+将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。</p>
+<p>2.TCP/IP协议<br>
+TCP/IP协议是个协议簇，它包含了多种协议。ISO/OSI模型、TCP/IP的分层模型及协议的对应如图<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617694045715.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[The prefix "context" for element "context:component-scan" is not bound.]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/the-prefix-context-for-element-contextcomponent-scan-is-not-bound/</id>
@@ -264,17 +297,6 @@ recaptcha 图片验证码加速</p>
 <p>点击settings进行我们的仓库配置，之后找到GitHubPages进行页面的配置：</p>
 <p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227050732.png" alt="" loading="lazy"><br>
 点击Your site is  published at右边的蓝色网址就是博客所在的主页啦😄</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Implicit super constructor Object() is undefined for default constructor报错]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/implicit-super-constructor-object-is-undefined-for-default-constructor-bao-cuo/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/implicit-super-constructor-object-is-undefined-for-default-constructor-bao-cuo/">
-        </link>
-        <updated>2021-03-18T08:02:53.000Z</updated>
-        <content type="html"><![CDATA[<p>今天我在git clone一个已经完成的作业导入eclipse时发现编译器报错。控制台显示Implicit super constructor Object() is undefined for default constructor报错。😱</p>
-<p>我在百度后才知道这是个小问题，为了让自己能长个记性我决定把这个问题写下来让自己能印象深刻。</p>
-<p>解决方案：把java的类库加载进去，在工程上右键选择属性-&gt;Java Build Path的Libraries-&gt;Add Library选择JRE System Library-&gt;点击Next-&gt;选择Execution environment并选择jre版本或workspace default jre(有显示的版本不是都能选的的，只有默认自带的jre和安装绑定过的选了才能起作用)-&gt;点击Finish。</p>
 ]]></content>
     </entry>
 </feed>
