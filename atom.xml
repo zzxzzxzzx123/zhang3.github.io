@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-04-06T07:55:01.355Z</updated>
+    <updated>2021-04-10T12:32:08.938Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,23 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[微信小程序支持的背景文件格式]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-zhi-chi-de-bei-jing-wen-jian-ge-shi/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-zhi-chi-de-bei-jing-wen-jian-ge-shi/">
+        </link>
+        <updated>2021-04-10T11:49:06.000Z</updated>
+        <summary type="html"><![CDATA[<p>今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨</p>
+<!-- more -->
+<p>于是我也想在自己的小程序中更改为.gif后缀的文件，在查询了官方文档后有下面解释</p>
+<p>cover-image<br>
+基础库 1.4.0 开始支持，低版本需做兼容处理。<br>
+覆盖在原生组件之上的图片视图。可覆盖的原生组件同cover-view，支持嵌套在cover-view里。</p>
+<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1618055829123.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[OSI七层模型与TCP/IP五层模型]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/</id>
@@ -282,21 +299,6 @@ recaptcha 图片验证码加速</p>
 反正用了这个之后，上面那些dns优选什么的特性好像都不香了<br>
 快速开始<br>
 支持windows、Mac</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[创建GitHub博客主页(仓库主页)绑定域名问题There isn't a GitHub Pages site here]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/chuang-jian-github-bo-ke-zhu-ye-cang-ku-zhu-ye-bang-ding-yu-ming-wen-ti-there-isnt-a-github-pages-site-here/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/chuang-jian-github-bo-ke-zhu-ye-cang-ku-zhu-ye-bang-ding-yu-ming-wen-ti-there-isnt-a-github-pages-site-here/">
-        </link>
-        <updated>2021-03-20T07:48:13.000Z</updated>
-        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227027502.png" alt="" loading="lazy"></figure>
-<p>​	出现这个404 的错误，一般表示你的域名已经能够解析到了XXX.github.io，但是你的github还需要进一步配置。</p>
-<p>​    首先，我们需要先进入到你的项目中去：</p>
-<figure data-type="image" tabindex="2"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227040021.png" alt="" loading="lazy"></figure>
-<p>点击settings进行我们的仓库配置，之后找到GitHubPages进行页面的配置：</p>
-<p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616227050732.png" alt="" loading="lazy"><br>
-点击Your site is  published at右边的蓝色网址就是博客所在的主页啦😄</p>
 ]]></content>
     </entry>
 </feed>

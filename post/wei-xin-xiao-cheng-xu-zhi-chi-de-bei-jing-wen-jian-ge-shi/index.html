@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>java | 张卓欣的学习记录</title>
+<title>微信小程序支持的背景文件格式 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,7 +18,13 @@
 
 
 
-    <meta name="description" content="学习使我快乐">
+    <meta name="description" content="今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨
+
+于是我也想在自己的小程序中更改为.gif后缀的文件，在查询了官方文档后有下面解释
+cover-image
+基础库 1.4.0 开始支持，低版本需做兼容处理。
+覆盖在原生组件之..." />
+    <meta name="keywords" content="" />
   </head>
   <body>
     <div id="app" class="main">
@@ -95,53 +101,35 @@
 
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
-          <h2 class="current-tag">标签: java</h2>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xian-cheng-he-jin-cheng-de-qu-bie/">
-                  <h2 class="post-title">线程和进程的区别</h2>
-                </a>
-                <div class="post-date">
-                  2021-03-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xian-cheng-he-jin-cheng-de-qu-bie/">
-                  <div class="feature-container" style="background-image: url('https://image.baidu.com/search/down?tn=download&amp;ipn=dwnl&amp;word=download&amp;ie=utf8&amp;fr=result&amp;url=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%253A%252F%252Fwww.chenyoude.com%252FPython%2525E4%2525BB%25258E%2525E5%252585%2525A5%2525E9%252597%2525A8%2525E5%252588%2525B0%2525E6%252594%2525BE%2525E5%2525BC%252583%252F175-%2525E8%2525BF%25259B%2525E7%2525A8%25258B%2525E5%252592%25258C%2525E7%2525BA%2525BF%2525E7%2525A8%25258B%2525E7%25259A%252584%2525E5%25258C%2525BA%2525E5%252588%2525AB-01.png%253Fx-oss-process%253Dstyle%252Fwatermark%26refer%3Dhttp%253A%252F%252Fwww.chenyoude.com%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1618824742%26t%3D1ca0e1e98020f56116360eeb791d94a3&amp;thumburl=https%3A%2F%2Fss2.bdstatic.com%2F70cFvnSh_Q1YnxGkpoWK1HF6hhy%2Fit%2Fu%3D4060991887%2C1288718603%26fm%3D26%26gp%3D0.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
-            <article class="post-item">
-              <div class="left">
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/ru-he-ying-dui-gao-bing-fa/">
-                  <h2 class="post-title">如何应对高并发</h2>
-                </a>
-                <div class="post-date">
-                  2021-03-20
-                </div>
-                <div class="post-abstract">
-                  
-                </div>
-              </div>
-              
-                <a class="right" href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/ru-he-ying-dui-gao-bing-fa/">
-                  <div class="feature-container" style="background-image: url('https://image.baidu.com/search/down?tn=download&amp;ipn=dwnl&amp;word=download&amp;ie=utf8&amp;fr=result&amp;url=https%3A%2F%2Fgimg2.baidu.com%2Fimage_search%2Fsrc%3Dhttp%253A%252F%252Fs1.51ctocdn.cn%252Fimages%252F201911%252F08%252F4e66a9f6c5377d74b388ffa741feaf4e.png%253Fx-oss-process%253Dimage%252Fresize%252Cm_fixed%252Cw_500%252Ch_300%26refer%3Dhttp%253A%252F%252Fs1.51ctocdn.cn%26app%3D2002%26size%3Df9999%2C10000%26q%3Da80%26n%3D0%26g%3D0n%26fmt%3Djpeg%3Fsec%3D1618824818%26t%3D924b4430550ada6f2e9daa0e5fdea489&amp;thumburl=https%3A%2F%2Fss2.bdstatic.com%2F70cFvnSh_Q1YnxGkpoWK1HF6hhy%2Fit%2Fu%3D2580006498%2C2432438154%26fm%3D26%26gp%3D0.jpg')">
-                  </div>
-                </a>
-              
-            </article>
-          
+          <div class="post-detail">
+            <h2 class="post-title">微信小程序支持的背景文件格式</h2>
+            <div class="post-date">2021-04-10</div>
+            
+            <div class="post-content" v-pre>
+              <p>今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨</p>
+<!-- more -->
+<p>于是我也想在自己的小程序中更改为.gif后缀的文件，在查询了官方文档后有下面解释</p>
+<p>cover-image<br>
+基础库 1.4.0 开始支持，低版本需做兼容处理。<br>
+覆盖在原生组件之上的图片视图。可覆盖的原生组件同cover-view，支持嵌套在cover-view里。</p>
+<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1618055829123.png" alt="" loading="lazy"></figure>
 
-          <div class="pagination-container">
-  
-  
-</div>
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/">
+                  <h3 class="post-title">
+                    OSI七层模型与TCP/IP五层模型
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
 
         </div>
       </div>
