@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-04-19T13:14:21.977Z</updated>
+    <updated>2021-04-20T13:29:35.429Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,173 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[小程序相关]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/">
+        </link>
+        <updated>2021-04-20T13:29:15.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-数据绑定">1.  数据绑定</h2>
+<ol>
+<li>小程序
+<ol>
+<li>data中初始化数据</li>
+<li>修改数据： this.setData()
+<ol>
+<li>修改数据的行为始终是同步的</li>
+</ol>
+</li>
+<li>数据流：
+<ol>
+<li>单项： Model ---&gt; View</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>Vue
+<ol>
+<li>data中初始化数据</li>
+<li>修改数据: this.key = value</li>
+<li>数据流：
+<ol>
+<li>Vue是单项数据流： Model ---&gt; View</li>
+<li>Vue中实现了双向数据绑定： v-model</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>React
+<ol>
+<li>state中初始化状态数据</li>
+<li>修改数据: this.setState()
+<ol>
+<li>自身钩子函数中(componentDidMount)异步的</li>
+<li>非自身的钩子函数中(定时器的回调)同步的</li>
+</ol>
+</li>
+<li>数据流：
+<ol>
+<li>单项： Model ---&gt; View</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="2-获取用户基本信息">2. 获取用户基本信息</h2>
+<ol>
+<li>用户未授权(首次登陆)
+<ol>
+<li>button open-type=‘getUserInfo’</li>
+</ol>
+</li>
+<li>用户已经授权(再次登陆)
+<ol>
+<li>wx.getUserInfo</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-前后端交互">3. 前后端交互</h2>
+<ol>
+<li>语法: wx.request()</li>
+<li>注意点:
+<ol>
+<li>协议必须是https协议</li>
+<li>一个接口最多配置20个域名</li>
+<li>并发限制上限是10个</li>
+<li><strong>开发过程中设置不校验合法域名</strong>： 开发工具 ---&gt; 右上角详情 ----&gt; 本地设置 ---&gt; 不校验</li>
+</ol>
+</li>
+</ol>
+<h2 id="4-本地存储">4. 本地存储</h2>
+<ol>
+<li>语法: wx.setStorage() || wx.setStorageSync() || .....</li>
+<li>注意点：
+<ol>
+<li>建议存储的数据为json数据</li>
+<li>单个 key 允许存储的最大数据长度为 1MB，所有数据存储上限为 10MB</li>
+<li>属于永久存储，同H5的localStorage一样</li>
+</ol>
+</li>
+</ol>
+<h1 id="扩展内容">扩展内容</h1>
+<h2 id="1-事件流的三个阶段">1. 事件流的三个阶段</h2>
+<ol>
+<li>捕获: 从外向内</li>
+<li>执行目标阶段</li>
+<li>冒泡: 从内向外</li>
+</ol>
+<h2 id="2-事件委托">2. 事件委托</h2>
+<ol>
+<li>什么是事件委托
+<ol>
+<li>将子元素的事件委托(绑定)给父元素</li>
+</ol>
+</li>
+<li>事件委托的好处
+<ol>
+<li>减少绑定的次数</li>
+<li>后期新添加的元素也可以享用之前委托的事件</li>
+</ol>
+</li>
+<li>事件委托的原理
+<ol>
+<li>冒泡</li>
+</ol>
+</li>
+<li>触发事件的是谁
+<ol>
+<li>子元素</li>
+</ol>
+</li>
+<li>如何找到触发事件的对象
+<ol>
+<li>event.target</li>
+</ol>
+</li>
+<li>currentTarget VS target
+<ol>
+<li>currentTarget要求绑定事件的元素一定是触发事件的元素</li>
+<li>target绑定事件的元素不一定是触发事件的元素</li>
+</ol>
+</li>
+</ol>
+<h2 id="3-定义事件相关">3. 定义事件相关</h2>
+<ol>
+<li>分类
+<ol>
+<li>标准DOM事件</li>
+<li>自定义事件</li>
+</ol>
+</li>
+<li>标准DOM事件
+<ol>
+<li>举例： click，input。。。</li>
+<li>事件名固定的，事件由浏览器触发</li>
+</ol>
+</li>
+<li>自定义事件
+<ol>
+<li>绑定事件
+<ol>
+<li>事件名</li>
+<li>事件的回调</li>
+<li>订阅方: PubSub.subscribe(事件名，事件的回调)</li>
+<li>订阅方式接受数据的一方</li>
+</ol>
+</li>
+<li>触发事件
+<ol>
+<li>事件名</li>
+<li>提供事件参数对象， 等同于原生事件的event对象</li>
+<li>发布方: PubSub.publish(事件名，提供的数据)</li>
+<li>发布方是提供数据的一方</li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Implicit super constructor Object() is undefined for default constructor. Must define an explicit   constructor错误]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/implicit-super-constructor-object-is-undefined-for-default-constructor-must-define-an-explicit-constructor-cuo-wu/</id>
@@ -251,23 +418,6 @@ Thymeleaf<br>
 CDN：能实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等信息将请求重新导向离用户最近的服务节点上。<br>
 nginx：高性能的HTTP服务器和反向代理服务器</p>
 <p>6.多用异步请求，少用同步请求。（需要返回结果执行下一步的必须使用同步请求）</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[HTTP与HTTPS的区别以及如何实现安全性]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/http-yu-https-de-qu-bie-yi-ji-ru-he-shi-xian-an-quan-xing/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/http-yu-https-de-qu-bie-yi-ji-ru-he-shi-xian-an-quan-xing/">
-        </link>
-        <updated>2021-03-20T08:45:56.000Z</updated>
-        <content type="html"><![CDATA[<p>http协议传输的数据都是未加密的，也就是明文的，因此使用http协议传输隐私信息非常不安全。为了保证这些隐私数据能加密传输，于是网景公司设计了ssl(Secure Sockets Layer)协议用于对http协议传输的数据进行加密，从而就诞生了https。<br>
-简单来说，https协议是由ssl+http协议构建的可进行加密传输、身份认证的网络协议，要比http协议安全。<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616230227669.png" alt="" loading="lazy"></p>
-<p>1.Url开头：HTTP 的 URL 以 HTTP:// 开头，而 HTTPS 的 URL 以 HTTPs:// 开头；</p>
-<p>2.安全性：HTTP 是不安全的，而 HTTPS 是安全的。HTTP协议运行在TCP之上，所有传输的内容都是明文，HTTPS运行在SSL/TLS之上，SSL/TLS运行在TCP之上，所有传输的内容都经过加密的。</p>
-<p>3.传输效率：传输效率上 HTTP 要高于 HTTPS ，因为http是超文本传输协议，信息是明文传输，https 则是具有安全性的ssl加密传输协议。</p>
-<p>4.费用：HTTP 无需证书，而 HTTPS 必需要认证证书；相比于 HTTP 不需要证书来说，使用 HTTPS 需要证书，申请证书是要费用的，HTTPS 这笔费用是无法避免的</p>
-<p>5.端口：HTTP和HTTPS使用的是完全不同的连接方式，用的端口也不一样，前者是80，后者是443。</p>
-<p>6.防劫持性：HTTPS可以有效的防止运营商劫持，解决了防劫持的一个大问题。</p>
 ]]></content>
     </entry>
 </feed>
