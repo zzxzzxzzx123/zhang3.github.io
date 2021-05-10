@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>未安装wx-server-sdk依赖 | 张卓欣的学习记录</title>
+<title>微信小程序云数据库匹配数据问题 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,14 +18,10 @@
 
 
 
-    <meta name="description" content="如图所示内容
-
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。
-例如以下代码中，
-
-在env：中填写环境id
-
-..." />
+    <meta name="description" content="一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下
+wx.cloud.database().collection('zzx').where({
+type:&quot;单选&quot;		
+}).limit(..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -104,26 +100,34 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">未安装wx-server-sdk依赖</h2>
-            <div class="post-date">2021-04-26</div>
+            <h2 class="post-title">微信小程序云数据库匹配数据问题</h2>
+            <div class="post-date">2021-05-10</div>
             
             <div class="post-content" v-pre>
-              <p>如图所示内容<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447929866.png" alt="" loading="lazy"><br>
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。</p>
-<p>例如以下代码中，<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447957749.png" alt="" loading="lazy"><br>
-在env：中填写环境id<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619448011651.png" alt="" loading="lazy"></p>
+              <p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
+wx.cloud.database().collection('zzx').where({<br>
+type:&quot;单选&quot;		<br>
+}).limit(5).get()<br>
+数据库中字段如图：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
+<!-- more -->
+<p>后面题库数量增加后，如果一直提供的题目都是固定的对用户体验不是很好，所以更换为下列方法<br>
+wx.cloud.database().collection('zzx').aggregate().match({<br>
+type: '单选'<br>
+}).sample({<br>
+size:10<br>
+}).end()<br>
+.aggregate方法是微信小程序中随机得到数据库里数据的方法，.match为匹配特殊字段方法<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658096193.png" alt="" loading="lazy"></p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-an-zhuang-wx-server-sdk-yi-lai/">
                   <h3 class="post-title">
-                    小程序相关
+                    未安装wx-server-sdk依赖
                   </h3>
                 </a>
               </div>

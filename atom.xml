@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-04-26T14:40:36.515Z</updated>
+    <updated>2021-05-10T14:57:19.644Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,52 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[微信小程序无法隐藏视频控制组件？]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-wu-fa-yin-cang-shi-pin-kong-zhi-zu-jian/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-wu-fa-yin-cang-shi-pin-kong-zhi-zu-jian/">
+        </link>
+        <updated>2021-05-10T14:52:56.000Z</updated>
+        <summary type="html"><![CDATA[<p>不知道大家有没有碰到这种情况，把video的视频当作轮播图使用时，默认弹出来的播放控件（播放/暂停按钮、播放进度、时间）是不是觉得很碍眼。那当我翻找小程序文档想解决这个问题时碰到了这个问题</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>不知道大家有没有碰到这种情况，把video的视频当作轮播图使用时，默认弹出来的播放控件（播放/暂停按钮、播放进度、时间）是不是觉得很碍眼。那当我翻找小程序文档想解决这个问题时碰到了这个问题</p>
+<!-- more -->
+<p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658516689.png" alt="" loading="lazy"><br>
+可是我在&lt;video controls:&quot;false&quot;&gt;<video>中并没有解决这个问题<br>
+后来在论坛中找到了解决办法<br>
+将上述代码修改为controls=&quot;{{false}}&quot;就可以啦</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[微信小程序云数据库匹配数据问题]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-yun-shu-ju-ku-pi-pei-shu-ju-wen-ti/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-yun-shu-ju-ku-pi-pei-shu-ju-wen-ti/">
+        </link>
+        <updated>2021-05-10T13:59:26.000Z</updated>
+        <summary type="html"><![CDATA[<p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
+wx.cloud.database().collection('zzx').where({<br>
+type:&quot;单选&quot;		<br>
+}).limit(5).get()<br>
+数据库中字段如图：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
+]]></summary>
+        <content type="html"><![CDATA[<p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
+wx.cloud.database().collection('zzx').where({<br>
+type:&quot;单选&quot;		<br>
+}).limit(5).get()<br>
+数据库中字段如图：<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
+<!-- more -->
+<p>后面题库数量增加后，如果一直提供的题目都是固定的对用户体验不是很好，所以更换为下列方法<br>
+wx.cloud.database().collection('zzx').aggregate().match({<br>
+type: '单选'<br>
+}).sample({<br>
+size:10<br>
+}).end()<br>
+.aggregate方法是微信小程序中随机得到数据库里数据的方法，.match为匹配特殊字段方法<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658096193.png" alt="" loading="lazy"></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[未安装wx-server-sdk依赖]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-an-zhuang-wx-server-sdk-yi-lai/</id>
@@ -303,90 +349,6 @@ http://www.springframework.org/schema/context http://www.springframework.org/sch
 <p>方式三：<br>
 <img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1616679507357.png" alt="" loading="lazy"></p>
 <p>把上面出现的所有使用代理的协议，全部都取消掉，然后再重新进行clone就解决问题了😁</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[微信小程序入门概述]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-ru-men-gai-shu/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-ru-men-gai-shu/">
-        </link>
-        <updated>2021-03-23T14:11:02.000Z</updated>
-        <summary type="html"><![CDATA[<p>小程序特点概述</p>
-<p>1.没有DOM</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>小程序特点概述</p>
-<p>1.没有DOM</p>
-<!-- more -->
-<p>2.组件化开发：具备特定功能效果的代码集合</p>
-<!-- more -->
-<p>3.体积小，单个压缩包体积不能大于2M，否则无法上线</p>
-<!-- more -->
-<p>4.小程序的四个重要的文件<br>
-​    a）*.js</p>
-<p>​    b）*.wxml   view结构   html</p>
-<p>​    c）*.wxss     view样式   css</p>
-<p>​    d）*.json     view数据   json文件</p>
-<!-- more -->
-<p>5.小程序特有的适配方案//小程序虽然以html5为基础，但是使用中仍有差异<br>
-​    a）小程序适配单位：rpx</p>
-<p>​    b）规定任何屏幕下宽度为750rpx</p>
-<p>​    c）小程序会根据屏幕的宽度不同自动计算rpx值的大小</p>
-<p>6.小程序API</p>
-<p>​    a）小程序全局对象是：wx</p>
-<p>​    b）所有的API都保存在wx对象中</p>
-<p>7.快速查找技巧</p>
-<p>a）当在小程序中想要实现某一种布局，查看组件</p>
-<p>b）当在小程序中想要实现某一种功能，查看API</p>
-<p>c）当在小程序中想要实现某一个配置或者某一种页面语法，查看框架+指南</p>
-<p>微信官方文档</p>
-<!-- more -->
-<p>https://developers.weixin.qq.com/miniprogram/dev/framework/app-service/page-life-cycle.html</p>
-<p>8.常用API</p>
-<p>界面交互：</p>
-<p>显示消息提示框：wx.showToast（）<br>
-显示消息加载框：wx.showLoading（）<br>
-关闭消息提示框：wx.hideToast（）<br>
-关闭消息加载框：wx.hideLoading（）</p>
-<p>路由跳转<br>
-wx.navigateTo（）<br>
-wx.redirectTo（）<br>
-wx.switchTab（）</p>
-<p>网络请求<br>
-wx.request（）</p>
-<p>本地存储<br>
-wx.setStorage（）<br>
-wx.setStorageSync（）<br>
-wx.getStorage（）<br>
-wx.getStorageSync（）</p>
-<p>媒体<br>
-wx.getBackgroundAudioManager（）<br>
-wx.playVoice（）</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[线程和进程的区别]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/xian-cheng-he-jin-cheng-de-qu-bie/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xian-cheng-he-jin-cheng-de-qu-bie/">
-        </link>
-        <updated>2021-03-20T09:20:51.000Z</updated>
-        <content type="html"><![CDATA[<p>什么是进程和线程？😵<br>
-进程：是并发执行的程序在执行过程中分配和管理资源的基本单位，是一个动态概念，竞争计算机系统资源的基本单位。</p>
-<p>线程：是进程的一个执行单元，是进程内科调度实体。比进程更小的独立运行的基本单位。线程也被称为轻量级进程。</p>
-<p>一个程序至少一个进程，一个进程至少一个线程。</p>
-<p>为什么会有线程？</p>
-<p>每个进程都有自己的地址空间，即进程空间，在网络或多用户换机下，一个服务器通常需要接收大量不确定数量用户的并发请求，为每一个请求都创建一个进程显然行不通（系统开销大响应用户请求效率低），因此操作系统中线程概念被引进。</p>
-<p>线程的执行过程是线性的，尽管中间会发生中断或者暂停，但是进程所拥有的资源只为改线状执行过程服务，一旦发生线程切换，这些资源需要被保护起来。<br>
-进程分为单线程进程和多线程进程，单线程进程宏观来看也是线性执行过程，微观上只有单一的执行过程。多线程进程宏观是线性的，微观上多个执行操作。<br>
-线程的改变只代表CPU的执行过程的改变，而没有发生进程所拥有的资源的变化。</p>
-<p></p>
-<p>线程和进程各自有什么区别和优劣呢？<br>
-进程是资源分配的最小单位，线程是程序执行的最小单位。</p>
-<p>进程有自己的独立地址空间，每启动一个进程，系统就会为它分配地址空间，建立数据表来维护代码段、堆栈段和数据段，这种操作非常昂贵。而线程是共享进程中的数据的，使用相同的地址空间，因此CPU切换一个线程的花费远比进程要小很多，同时创建一个线程的开销也比进程要小很多。</p>
-<p>线程之间的通信更方便，同一进程下的线程共享全局变量、静态变量等数据，而进程之间的通信需要以通信的方式（IPC)进行。不过如何处理好同步与互斥是编写多线程程序的难点。</p>
-<p>但是多进程程序更健壮，多线程程序只要有一个线程死掉，整个进程也死掉了，而一个进程死掉并不会对另外一个进程造成影响，因为进程有自己独立的地址空间。</p>
-<p>何时使用多进程，何时使用多线程？</p>
-<p>对资源的管理和保护要求高，不限制开销和效率时，使用多进程。</p>
-<p>要求效率高，频繁切换时，资源的保护管理要求不是很高时，使用多线程。</p>
 ]]></content>
     </entry>
 </feed>
