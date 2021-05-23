@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>小程序性能优化 | 张卓欣的学习记录</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zzxzzxzzx123.github.io/zhang3.github.io//favicon.ico?v=1621783733516">
+<link rel="stylesheet" href="https://zzxzzxzzx123.github.io/zhang3.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="#启动加载优化
+在小程序启动时，微信会在背后完成几项工作：下载小程序代码包、加载小程序代码包、初始化小程序首页。
+初始化小程序环境是微信环境做的工作,我们只需要控制代码包大小，和通过一些相关的缓存策略控制，和资源控制，逻辑控制，分包加载控制..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zzxzzxzzx123.github.io/zhang3.github.io/">
+        <img src="https://zzxzzxzzx123.github.io/zhang3.github.io//images/avatar.png?v=1621783733516" class="site-logo">
+        <h1 class="site-title">张卓欣的学习记录</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/index.html" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/zzxzzxzzx123?tab=repositories" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      学习使我快乐
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script> | <a class="rss" href="https://zzxzzxzzx123.github.io/zhang3.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">小程序性能优化</h2>
+            <div class="post-date">2021-05-23</div>
+            
+            <div class="post-content" v-pre>
+              <p>#启动加载优化<br>
+在小程序启动时，微信会在背后完成几项工作：下载小程序代码包、加载小程序代码包、初始化小程序首页。</p>
+<p>初始化小程序环境是微信环境做的工作,我们只需要控制代码包大小，和通过一些相关的缓存策略控制，和资源控制，逻辑控制，分包加载控制来进行启动加载优化。</p>
+<p>勾选开发者工具中， 上传时压缩代码（若采用wepy高级版本，自带压缩，请按官网文档采取点击）<br>
+精简代码，去掉不必要的WXML结构和未使用的WXSS定义。<br>
+减少在代码包中直接嵌入的资源文件。（比如全国地区库，微信有自带的，在没必要的时候，勿自用自己的库）</p>
+<p>及时清理无用的资源（js文件、图片、demo页面等）<br>
+压缩图片，使用适当的图片格式，减少本地图片数量等</p>
+<p>如果小程序比较复杂，优化后的代码总量可能仍然比较大，此时可以采用分包加载的方式进行优化，分包加载初始化时只加载首评相关、高频访问的资源，其他的按需加载。<br>
+提前做异步请求，页面最好在onLoad时异步请求数据，不要在onReady时请求<br>
+启用缓存数据策略，请求时先展示缓存内容，让页面尽快展示，请求到最新数据之后再刷新<br>
+避免白屏，使用骨架屏等</p>
+<p>#数据通信优化<br>
+为了提升数据更新的性能，开发者在执行setData调用时，最好遵循以下原则：</p>
+<p>不要过于频繁调用setData，应考虑将多次setData合并成一次setData调用；<br>
+数据通信的性能与数据量正相关，因而如果有一些数据字段不在界面中展示且数据结构比较复杂或包含长字符串，则不应使用setData来设置这些数据；<br>
+与界面渲染无关的数据最好不要设置在data中，可以考虑设置在page对象的其他字段下。<br>
+提升数据更新性能方式的代码示例：</p>
+<p>Page({<br>
+onShow: function() {</p>
+<pre><code>// 不要频繁调用setData
+this.setData({ a: 1 })
+this.setData({ b: 2 })
+// 绝大多数时候可优化为
+this.setData({ a: 1, b: 2 })
+
+// 不要设置不在界面渲染时使用的数据，并将界面无关的数据放在data外
+this.setData({
+  myData: {
+    a: '这个字符串在WXML中用到了',
+    b: '这个字符串未在WXML中用到，而且它很长…………………………'
+  }
+})
+// 可以优化为
+this.setData({
+  'myData.a': '这个字符串在WXML中用到了'
+})
+this._myData = {
+  b: '这个字符串未在WXML中用到，而且它很长…………………………'
+}
+</code></pre>
+<p>}<br>
+})<br>
+#事件通信优化<br>
+视图层会接受用户事件，如点击事件、触摸事件等。当一个用户事件被触发且有相关的事件监听器需要被触发时，视图层会将信息反馈给逻辑层。这个反馈是异步的，会产生延迟，降低延迟的方法有两个：</p>
+<p>去掉不必要的事件绑定（WXML中的bind和catch），从而减少通信的数据量和次数；<br>
+事件绑定时需要传输target和currentTarget的dataset，因而不要在节点的data前缀属性中放置过大的数据。</p>
+<p>#渲染优化<br>
+页面方法onPageScroll使用， 每次页面滚动都会触发，避免在里面写过于复杂的逻辑 ，特别是一些执行重渲染页面的逻辑<br>
+在进行视图重渲染的时候，会进行当前节点树与新节点树的比较，去掉不必要设置的数据、减少setData的数据量也有助于提升这一个步骤的性能。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/jie-jue-tabbar-ye-mian-tiao-zhuan-de-wen-ti/">
+                  <h3 class="post-title">
+                    解决tabbar页面跳转的问题
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>

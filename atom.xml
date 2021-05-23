@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-05-12T14:16:16.229Z</updated>
+    <updated>2021-05-23T15:28:56.129Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,81 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[小程序性能优化]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xing-neng-you-hua/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xing-neng-you-hua/">
+        </link>
+        <updated>2021-05-23T15:25:56.000Z</updated>
+        <content type="html"><![CDATA[<p>#启动加载优化<br>
+在小程序启动时，微信会在背后完成几项工作：下载小程序代码包、加载小程序代码包、初始化小程序首页。</p>
+<p>初始化小程序环境是微信环境做的工作,我们只需要控制代码包大小，和通过一些相关的缓存策略控制，和资源控制，逻辑控制，分包加载控制来进行启动加载优化。</p>
+<p>勾选开发者工具中， 上传时压缩代码（若采用wepy高级版本，自带压缩，请按官网文档采取点击）<br>
+精简代码，去掉不必要的WXML结构和未使用的WXSS定义。<br>
+减少在代码包中直接嵌入的资源文件。（比如全国地区库，微信有自带的，在没必要的时候，勿自用自己的库）</p>
+<p>及时清理无用的资源（js文件、图片、demo页面等）<br>
+压缩图片，使用适当的图片格式，减少本地图片数量等</p>
+<p>如果小程序比较复杂，优化后的代码总量可能仍然比较大，此时可以采用分包加载的方式进行优化，分包加载初始化时只加载首评相关、高频访问的资源，其他的按需加载。<br>
+提前做异步请求，页面最好在onLoad时异步请求数据，不要在onReady时请求<br>
+启用缓存数据策略，请求时先展示缓存内容，让页面尽快展示，请求到最新数据之后再刷新<br>
+避免白屏，使用骨架屏等</p>
+<p>#数据通信优化<br>
+为了提升数据更新的性能，开发者在执行setData调用时，最好遵循以下原则：</p>
+<p>不要过于频繁调用setData，应考虑将多次setData合并成一次setData调用；<br>
+数据通信的性能与数据量正相关，因而如果有一些数据字段不在界面中展示且数据结构比较复杂或包含长字符串，则不应使用setData来设置这些数据；<br>
+与界面渲染无关的数据最好不要设置在data中，可以考虑设置在page对象的其他字段下。<br>
+提升数据更新性能方式的代码示例：</p>
+<p>Page({<br>
+onShow: function() {</p>
+<pre><code>// 不要频繁调用setData
+this.setData({ a: 1 })
+this.setData({ b: 2 })
+// 绝大多数时候可优化为
+this.setData({ a: 1, b: 2 })
+
+// 不要设置不在界面渲染时使用的数据，并将界面无关的数据放在data外
+this.setData({
+  myData: {
+    a: '这个字符串在WXML中用到了',
+    b: '这个字符串未在WXML中用到，而且它很长…………………………'
+  }
+})
+// 可以优化为
+this.setData({
+  'myData.a': '这个字符串在WXML中用到了'
+})
+this._myData = {
+  b: '这个字符串未在WXML中用到，而且它很长…………………………'
+}
+</code></pre>
+<p>}<br>
+})<br>
+#事件通信优化<br>
+视图层会接受用户事件，如点击事件、触摸事件等。当一个用户事件被触发且有相关的事件监听器需要被触发时，视图层会将信息反馈给逻辑层。这个反馈是异步的，会产生延迟，降低延迟的方法有两个：</p>
+<p>去掉不必要的事件绑定（WXML中的bind和catch），从而减少通信的数据量和次数；<br>
+事件绑定时需要传输target和currentTarget的dataset，因而不要在节点的data前缀属性中放置过大的数据。</p>
+<p>#渲染优化<br>
+页面方法onPageScroll使用， 每次页面滚动都会触发，避免在里面写过于复杂的逻辑 ，特别是一些执行重渲染页面的逻辑<br>
+在进行视图重渲染的时候，会进行当前节点树与新节点树的比较，去掉不必要设置的数据、减少setData的数据量也有助于提升这一个步骤的性能。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[解决tabbar页面跳转的问题]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/jie-jue-tabbar-ye-mian-tiao-zhuan-de-wen-ti/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/jie-jue-tabbar-ye-mian-tiao-zhuan-de-wen-ti/">
+        </link>
+        <updated>2021-05-23T13:14:21.000Z</updated>
+        <summary type="html"><![CDATA[<p>wx.navigateTo是我们常用的跳转页面方法，那有没有在开发中碰到这个情况呢？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>wx.navigateTo是我们常用的跳转页面方法，那有没有在开发中碰到这个情况呢？</p>
+<!-- more -->
+<p>wx.navigateTo(Object object)<br>
+保留当前页面，跳转到应用内的某个页面。但是不能跳到 tabbar 页面。使用 wx.navigateBack 可以返回到原页面。小程序中页面栈最多十层。</p>
+<p>那当我们在tabbar页面已经有跳转了后，再使用wx.navigateTo时就会碰到问题</p>
+<p>这种情况下我们可以使用这个方法 wx.switchTab(Object object)<br>
+其功能为跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于.ipynb文件]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-ipynb-wen-jian/</id>
@@ -326,39 +401,6 @@ OSI参考模型中最靠近用户的一层，是为计算机用户提供应用�
 <p>2.TCP/IP协议<br>
 TCP/IP协议是个协议簇，它包含了多种协议。ISO/OSI模型、TCP/IP的分层模型及协议的对应如图<br>
 <img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617694045715.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[The prefix "context" for element "context:component-scan" is not bound.]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/the-prefix-context-for-element-contextcomponent-scan-is-not-bound/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/the-prefix-context-for-element-contextcomponent-scan-is-not-bound/">
-        </link>
-        <updated>2021-03-29T13:14:42.000Z</updated>
-        <content type="html"><![CDATA[<p>在配置Spring中的xml时配置<br>
-&lt;context:component-scan base-package=&quot;包名&quot; /&gt;<br>
-报错：The prefix &quot;context&quot; for element &quot;context:component-scan&quot; is not bound.</p>
-<p>该配置文件的<beans></beans>标签的属性和当前的base.jar文件不匹配。需要在<beans>加上相应属性即可。如下图（红线上那一列即为需要加上的东西）：<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617027281108.png" alt="" loading="lazy"></p>
-<p>下面是需要添加的部分的文字版：<br>
-xmlns：中加入<br>
-xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</p>
-<p>xsi：中加入<br>
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Mysql数据库驱动：mysql-connector-java-5.1.46-bin.jar]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/mysql-shu-ju-ku-qu-dong-mysql-connector-java-5146-binjar/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/mysql-shu-ju-ku-qu-dong-mysql-connector-java-5146-binjar/">
-        </link>
-        <updated>2021-03-29T13:10:59.000Z</updated>
-        <summary type="html"><![CDATA[<p>今天在学习Spring的事务管理时要用到mysql-connector-java-bin.jar，<br>
-我在百度找到下面的链接😀</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>今天在学习Spring的事务管理时要用到mysql-connector-java-bin.jar，<br>
-我在百度找到下面的链接😀</p>
-<!-- more -->
-<p><a href="https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.46.zip">mysql-connector-java-5.1.46-bin.jar 点击链接直接下载</a></p>
 ]]></content>
     </entry>
 </feed>
