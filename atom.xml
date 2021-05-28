@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-05-23T15:28:56.129Z</updated>
+    <updated>2021-05-28T14:58:29.544Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,24 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[关于 var that = this 为什么在小程序出现这么频繁]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-var-that-this-wei-shi-me-zai-xiao-cheng-xu-chu-xian-zhe-me-pin-fan/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-var-that-this-wei-shi-me-zai-xiao-cheng-xu-chu-xian-zhe-me-pin-fan/">
+        </link>
+        <updated>2021-05-28T14:53:44.000Z</updated>
+        <summary type="html"><![CDATA[<p>我在一个小程序项目中看到一个注释//var that=this很重要<br>
+一开始我有点不明白，因为这样只是在this.setData变化中变成that.setData<br>
+所以在出现问题后才去找了为什么</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>我在一个小程序项目中看到一个注释//var that=this很重要<br>
+一开始我有点不明白，因为这样只是在this.setData变化中变成that.setData<br>
+所以在出现问题后才去找了为什么</p>
+<!-- more -->
+<p>https://blog.csdn.net/qq_37032151/article/details/81432732<br>
+这篇博客讲的很好</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[小程序性能优化]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xing-neng-you-hua/</id>
@@ -368,39 +386,6 @@ size:10<br>
 基础库 1.4.0 开始支持，低版本需做兼容处理。<br>
 覆盖在原生组件之上的图片视图。可覆盖的原生组件同cover-view，支持嵌套在cover-view里。</p>
 <figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1618055829123.png" alt="" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[OSI七层模型与TCP/IP五层模型]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/osi-qi-ceng-mo-xing-yu-tcpip-wu-ceng-mo-xing/">
-        </link>
-        <updated>2021-04-06T07:13:39.000Z</updated>
-        <content type="html"><![CDATA[<p>1.OSI模型<br>
-OSI全称为开放系统互联参考模型，于1978年被国际标准化组织（ISO）提出。OSI有七层，从低到高依次为物理层、数据链路层、网络层、传输层、会话层、表示层、应用层。<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617693646762.png" alt="" loading="lazy"><br>
-&lt;1&gt;    应用层<br>
-OSI参考模型中最靠近用户的一层，是为计算机用户提供应用接口，也为用户直接提供各种网络服务。我们常见应用层的网络服务协议有：HTTP，HTTPS，FTP，POP3、SMTP等。<br>
-&lt;2&gt;    表示层<br>
-表示数据转换<br>
-格式有，JPEG、ASCll、EBCDIC、加密格式等<br>
-&lt;3&gt;    会话层<br>
-建立、管理、终止会话。<br>
-&lt;4&gt;   传输层<br>
-定义传输数据的协议端口号，以及流控和差错校验。<br>
-协议有：TCP UDP，数据包一旦离开网卡即进入网络传输层<br>
-&lt;5&gt;   网络层<br>
-进行逻辑地址寻址，实现不同网络之间的路径选择。<br>
-协议有：ICMP IGMP IP（IPV4 IPV6）<br>
-&lt;6&gt;   数据链路层<br>
-建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
-将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。<br>
-&lt;7&gt;  物理层<br>
-建立逻辑连接、进行硬件地址寻址、差错校验 [3]  等功能。（由底层网络定义协议）<br>
-将比特组合成字节进而组合成帧，用MAC地址访问介质，错误发现但不能纠正。</p>
-<p>2.TCP/IP协议<br>
-TCP/IP协议是个协议簇，它包含了多种协议。ISO/OSI模型、TCP/IP的分层模型及协议的对应如图<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617694045715.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>

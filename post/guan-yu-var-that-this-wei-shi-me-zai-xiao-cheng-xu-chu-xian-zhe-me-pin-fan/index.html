@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>未安装wx-server-sdk依赖 | 张卓欣的学习记录</title>
+<title>关于 var that = this 为什么在小程序出现这么频繁 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,14 +18,11 @@
 
 
 
-    <meta name="description" content="如图所示内容
+    <meta name="description" content="我在一个小程序项目中看到一个注释//var that=this很重要
+一开始我有点不明白，因为这样只是在this.setData变化中变成that.setData
+所以在出现问题后才去找了为什么
 
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。
-例如以下代码中，
-
-在env：中填写环境id
-
-..." />
+https://blog.csdn.net..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -104,26 +101,25 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">未安装wx-server-sdk依赖</h2>
-            <div class="post-date">2021-04-26</div>
+            <h2 class="post-title">关于 var that = this 为什么在小程序出现这么频繁</h2>
+            <div class="post-date">2021-05-28</div>
             
             <div class="post-content" v-pre>
-              <p>如图所示内容<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447929866.png" alt="" loading="lazy"><br>
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。</p>
-<p>例如以下代码中，<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447957749.png" alt="" loading="lazy"><br>
-在env：中填写环境id<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619448011651.png" alt="" loading="lazy"></p>
+              <p>我在一个小程序项目中看到一个注释//var that=this很重要<br>
+一开始我有点不明白，因为这样只是在this.setData变化中变成that.setData<br>
+所以在出现问题后才去找了为什么</p>
+<!-- more -->
+<p>https://blog.csdn.net/qq_37032151/article/details/81432732<br>
+这篇博客讲的很好</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xing-neng-you-hua/">
                   <h3 class="post-title">
-                    小程序相关
+                    小程序性能优化
                   </h3>
                 </a>
               </div>
