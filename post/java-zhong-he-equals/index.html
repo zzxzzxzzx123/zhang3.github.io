@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>未安装wx-server-sdk依赖 | 张卓欣的学习记录</title>
+<title>java中== 和 equals() | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,14 +18,11 @@
 
 
 
-    <meta name="description" content="如图所示内容
-
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。
-例如以下代码中，
-
-在env：中填写环境id
-
-..." />
+    <meta name="description" content="执行下列程序的输出结果为（      ）
+public class Test {
+public static void main(String[] args) {
+String s1 = &quot;HelloWorld&quot;;
+St..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -104,26 +101,40 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">未安装wx-server-sdk依赖</h2>
-            <div class="post-date">2021-04-26</div>
+            <h2 class="post-title">java中== 和 equals()</h2>
+            <div class="post-date">2021-05-31</div>
             
             <div class="post-content" v-pre>
-              <p>如图所示内容<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447929866.png" alt="" loading="lazy"><br>
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。</p>
-<p>例如以下代码中，<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447957749.png" alt="" loading="lazy"><br>
-在env：中填写环境id<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619448011651.png" alt="" loading="lazy"></p>
+              <p>执行下列程序的输出结果为（      ）<br>
+public class Test {<br>
+public static void main(String[] args) {<br>
+String s1 = &quot;HelloWorld&quot;;<br>
+String s2 = new String(&quot;HelloWorld&quot;);<br>
+if (s1 == s2) {<br>
+System.out.println(&quot;s1 == s2&quot;);<br>
+} else {<br>
+System.out.println(&quot;s1 != s2&quot;);<br>
+}<br>
+if (s1.equals(s2)) {<br>
+System.out.println(&quot;s1 equals s2&quot;);<br>
+} else {<br>
+System.out.println(&quot;s1 not equals s2&quot;);<br>
+}<br>
+}<br>
+}</p>
+<p>正确答案为<br>
+s1 != s2<br>
+s1 equals s2</p>
+<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1622440786573.png" alt="" loading="lazy"></figure>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-var-that-this-wei-shi-me-zai-xiao-cheng-xu-chu-xian-zhe-me-pin-fan/">
                   <h3 class="post-title">
-                    小程序相关
+                    关于 var that = this 为什么在小程序出现这么频繁
                   </h3>
                 </a>
               </div>

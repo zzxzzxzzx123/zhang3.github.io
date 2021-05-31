@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-05-28T14:58:29.544Z</updated>
+    <updated>2021-05-31T05:59:53.709Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,35 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[java中== 和 equals()]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/java-zhong-he-equals/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/java-zhong-he-equals/">
+        </link>
+        <updated>2021-05-31T05:58:42.000Z</updated>
+        <content type="html"><![CDATA[<p>执行下列程序的输出结果为（      ）<br>
+public class Test {<br>
+public static void main(String[] args) {<br>
+String s1 = &quot;HelloWorld&quot;;<br>
+String s2 = new String(&quot;HelloWorld&quot;);<br>
+if (s1 == s2) {<br>
+System.out.println(&quot;s1 == s2&quot;);<br>
+} else {<br>
+System.out.println(&quot;s1 != s2&quot;);<br>
+}<br>
+if (s1.equals(s2)) {<br>
+System.out.println(&quot;s1 equals s2&quot;);<br>
+} else {<br>
+System.out.println(&quot;s1 not equals s2&quot;);<br>
+}<br>
+}<br>
+}</p>
+<p>正确答案为<br>
+s1 != s2<br>
+s1 equals s2</p>
+<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1622440786573.png" alt="" loading="lazy"></figure>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[关于 var that = this 为什么在小程序出现这么频繁]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-var-that-this-wei-shi-me-zai-xiao-cheng-xu-chu-xian-zhe-me-pin-fan/</id>
@@ -369,23 +398,6 @@ size:10<br>
 <!-- more -->
 <p>创建Class类的时候突然出现冒红，为了让自己能长个记性我决定把这个问题写下来让自己能印象深刻。</p>
 <p>解决方案：把java的类库加载进去，在工程上右键选择属性-&gt;Java Build Path的Libraries-&gt;Add Library选择JRE System Library-&gt;点击Next-&gt;选择Execution environment并选择jre版本或workspace default jre(有显示的版本不是都能选的的，只有默认自带的jre和安装绑定过的选了才能起作用，这里我选择的是JavaSE-1.8)-&gt;点击Finish。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[微信小程序支持的背景文件格式]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-zhi-chi-de-bei-jing-wen-jian-ge-shi/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-zhi-chi-de-bei-jing-wen-jian-ge-shi/">
-        </link>
-        <updated>2021-04-10T11:49:06.000Z</updated>
-        <summary type="html"><![CDATA[<p>今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>今天我在一个微信小程序项目中看到了背景图片是一张gif图片😨</p>
-<!-- more -->
-<p>于是我也想在自己的小程序中更改为.gif后缀的文件，在查询了官方文档后有下面解释</p>
-<p>cover-image<br>
-基础库 1.4.0 开始支持，低版本需做兼容处理。<br>
-覆盖在原生组件之上的图片视图。可覆盖的原生组件同cover-view，支持嵌套在cover-view里。</p>
-<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1618055829123.png" alt="" loading="lazy"></figure>
 ]]></content>
     </entry>
 </feed>
