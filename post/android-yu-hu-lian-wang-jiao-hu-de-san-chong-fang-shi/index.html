@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>The prefix &#34;context&#34; for element &#34;context:component-scan&#34; is not bound. | 张卓欣的学习记录</title>
+<title>Android与互联网交互的三种方式 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,9 +18,11 @@
 
 
 
-    <meta name="description" content="在配置Spring中的xml时配置
-&lt;context:component-scan base-package=&quot;包名&quot; /&gt;
-报错：The prefix &quot;context&quot; for ele..." />
+    <meta name="description" content="
+Get和Post的对比
+用得最多的两个，当然要做下对比啦！
+
+GET：在请求的URL地址后以?的形式带上交给服务器的数据，多个数据之间以&amp;进行分隔， 但数据容量通常不能超过2K，比如:http://xxx?username=…&a..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -99,29 +101,85 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">The prefix &#34;context&#34; for element &#34;context:component-scan&#34; is not bound.</h2>
-            <div class="post-date">2021-03-29</div>
+            <h2 class="post-title">Android与互联网交互的三种方式</h2>
+            <div class="post-date">2021-12-02</div>
             
             <div class="post-content" v-pre>
-              <p>在配置Spring中的xml时配置<br>
-&lt;context:component-scan base-package=&quot;包名&quot; /&gt;<br>
-报错：The prefix &quot;context&quot; for element &quot;context:component-scan&quot; is not bound.</p>
-<p>该配置文件的<beans></beans>标签的属性和当前的base.jar文件不匹配。需要在<beans>加上相应属性即可。如下图（红线上那一列即为需要加上的东西）：<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1617027281108.png" alt="" loading="lazy"></p>
-<p>下面是需要添加的部分的文字版：<br>
-xmlns：中加入<br>
-xmlns:context=&quot;http://www.springframework.org/schema/context&quot;</p>
-<p>xsi：中加入<br>
-http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd</p>
+              <figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1638419606056.jpg" alt="" loading="lazy"></figure>
+<p>Get和Post的对比<br>
+用得最多的两个，当然要做下对比啦！<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1638419616758.jpg" alt="" loading="lazy"><br>
+GET：在请求的URL地址后以?的形式带上交给服务器的数据，多个数据之间以&amp;进行分隔， 但数据容量通常不能超过2K，比如:http://xxx?username=…&amp;pawd=…这种就是GET<br>
+POST: 这个则可以在请求的实体内容中向服务器发送数据，传输没有数量限制<br>
+另外要说一点，这两个玩意都是发送数据的，只是发送机制不一样，不要相信网上说的 &quot;GET获得服务器数据，POST向服务器发送数据&quot;!!另外GET安全性非常低，Post安全性较高， 但是执行效率却比Post方法好，一般查询的时候我们用GET，数据增删改的时候用POST！！</p>
+<p>网络框架okhttp<br>
+OkHttp 是一个默认高效的 HTTP 客户端：<br>
+HTTP/2 支持允许对同一主机的所有请求共享一个套接字。<br>
+连接池减少了请求延迟（如果 HTTP/2 不可用）。<br>
+透明 GZIP 可缩小下载大小。<br>
+响应缓存完全避免网络重复请求。</p>
+<p>设置请求头<br>
+Request request = new Request.Builder()<br>
+.url(&quot;http://www.baidu.com&quot;)<br>
+.header(&quot;User-Agent&quot;, &quot;OkHttp Headers.java&quot;)<br>
+.addHeader(&quot;token&quot;, &quot;myToken&quot;)<br>
+.build();</p>
+<p>get同步请求<br>
+public void getSyn(final String url) {<br>
+new Thread(new Runnable() {<br>
+@Override<br>
+public void run() {<br>
+try {<br>
+//创建OkHttpClient对象<br>
+OkHttpClient client = new OkHttpClient();<br>
+//创建Request<br>
+Request request = new Request.Builder()<br>
+.url(url)//访问连接<br>
+.get()<br>
+.build();<br>
+//创建Call对象<br>
+Call call = client.newCall(request);<br>
+//通过execute()方法获得请求响应的Response对象<br>
+Response response = call.execute();<br>
+if (response.isSuccessful()) {<br>
+//处理网络请求的响应，处理UI需要在UI线程中处理<br>
+//...<br>
+}<br>
+} catch (IOException e) {<br>
+e.printStackTrace();<br>
+}<br>
+}<br>
+}).start();<br>
+}</p>
+<p>get异步请求<br>
+public void getAsyn(String url) {<br>
+OkHttpClient client = new OkHttpClient();<br>
+Request request = new Request.Builder().url(url).build();<br>
+Call call = client.newCall(request);<br>
+call.enqueue(new Callback() {<br>
+@Override<br>
+public void onFailure(Call call, IOException e) {<br>
+//...<br>
+}</p>
+<pre><code>    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        if(response.isSuccessful()){
+            String result = response.body().string();
+            //处理UI需要切换到UI线程处理
+        }
+    }
+});
+</code></pre>
+<p>}</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/mysql-shu-ju-ku-qu-dong-mysql-connector-java-5146-binjar/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-zhu-ti-yan-se-wen-ti/">
                   <h3 class="post-title">
-                    Mysql数据库驱动：mysql-connector-java-5.1.46-bin.jar
+                    Android主题颜色问题
                   </h3>
                 </a>
               </div>

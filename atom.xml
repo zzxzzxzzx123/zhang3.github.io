@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-05-31T05:59:53.709Z</updated>
+    <updated>2021-12-02T05:22:26.237Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,104 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[Android与互联网交互的三种方式]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-yu-hu-lian-wang-jiao-hu-de-san-chong-fang-shi/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-yu-hu-lian-wang-jiao-hu-de-san-chong-fang-shi/">
+        </link>
+        <updated>2021-12-02T04:24:52.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1638419606056.jpg" alt="" loading="lazy"></figure>
+<p>Get和Post的对比<br>
+用得最多的两个，当然要做下对比啦！<br>
+<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1638419616758.jpg" alt="" loading="lazy"><br>
+GET：在请求的URL地址后以?的形式带上交给服务器的数据，多个数据之间以&amp;进行分隔， 但数据容量通常不能超过2K，比如:http://xxx?username=…&amp;pawd=…这种就是GET<br>
+POST: 这个则可以在请求的实体内容中向服务器发送数据，传输没有数量限制<br>
+另外要说一点，这两个玩意都是发送数据的，只是发送机制不一样，不要相信网上说的 &quot;GET获得服务器数据，POST向服务器发送数据&quot;!!另外GET安全性非常低，Post安全性较高， 但是执行效率却比Post方法好，一般查询的时候我们用GET，数据增删改的时候用POST！！</p>
+<p>网络框架okhttp<br>
+OkHttp 是一个默认高效的 HTTP 客户端：<br>
+HTTP/2 支持允许对同一主机的所有请求共享一个套接字。<br>
+连接池减少了请求延迟（如果 HTTP/2 不可用）。<br>
+透明 GZIP 可缩小下载大小。<br>
+响应缓存完全避免网络重复请求。</p>
+<p>设置请求头<br>
+Request request = new Request.Builder()<br>
+.url(&quot;http://www.baidu.com&quot;)<br>
+.header(&quot;User-Agent&quot;, &quot;OkHttp Headers.java&quot;)<br>
+.addHeader(&quot;token&quot;, &quot;myToken&quot;)<br>
+.build();</p>
+<p>get同步请求<br>
+public void getSyn(final String url) {<br>
+new Thread(new Runnable() {<br>
+@Override<br>
+public void run() {<br>
+try {<br>
+//创建OkHttpClient对象<br>
+OkHttpClient client = new OkHttpClient();<br>
+//创建Request<br>
+Request request = new Request.Builder()<br>
+.url(url)//访问连接<br>
+.get()<br>
+.build();<br>
+//创建Call对象<br>
+Call call = client.newCall(request);<br>
+//通过execute()方法获得请求响应的Response对象<br>
+Response response = call.execute();<br>
+if (response.isSuccessful()) {<br>
+//处理网络请求的响应，处理UI需要在UI线程中处理<br>
+//...<br>
+}<br>
+} catch (IOException e) {<br>
+e.printStackTrace();<br>
+}<br>
+}<br>
+}).start();<br>
+}</p>
+<p>get异步请求<br>
+public void getAsyn(String url) {<br>
+OkHttpClient client = new OkHttpClient();<br>
+Request request = new Request.Builder().url(url).build();<br>
+Call call = client.newCall(request);<br>
+call.enqueue(new Callback() {<br>
+@Override<br>
+public void onFailure(Call call, IOException e) {<br>
+//...<br>
+}</p>
+<pre><code>    @Override
+    public void onResponse(Call call, Response response) throws IOException {
+        if(response.isSuccessful()){
+            String result = response.body().string();
+            //处理UI需要切换到UI线程处理
+        }
+    }
+});
+</code></pre>
+<p>}</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Android主题颜色问题]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-zhu-ti-yan-se-wen-ti/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-zhu-ti-yan-se-wen-ti/">
+        </link>
+        <updated>2021-10-19T12:09:03.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="C:%5CUsers%5C42516%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20211019200943180.png" alt="image-20211019200943180" loading="lazy"></figure>
+<p>Can't find ColorStateList from drawable resource ID #0x7f080085</p>
+<p>解决方法</p>
+<p>不能在 XML 中将 drawable 设置为 colorBackground</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[adb下载安装及使用]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/adb-xia-zai-an-zhuang-ji-shi-yong/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/adb-xia-zai-an-zhuang-ji-shi-yong/">
+        </link>
+        <updated>2021-06-11T13:50:48.000Z</updated>
+        <content type="html"><![CDATA[<p>今天碰到这样的一道题<br>
+adb 是在Android开发中经常使用的工具，其中从模拟器上拉取文件到本地电脑上使用的命令是（）</p>
+<p>https://blog.csdn.net/weixin_43927138/article/details/90477966<br>
+链接里的博客详细描述了Android开发中adb的使用</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[java中== 和 equals()]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/java-zhong-he-equals/</id>
@@ -202,202 +300,6 @@ size:10<br>
 }).end()<br>
 .aggregate方法是微信小程序中随机得到数据库里数据的方法，.match为匹配特殊字段方法<br>
 <img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658096193.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[未安装wx-server-sdk依赖]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-an-zhuang-wx-server-sdk-yi-lai/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-an-zhuang-wx-server-sdk-yi-lai/">
-        </link>
-        <updated>2021-04-26T14:36:33.000Z</updated>
-        <content type="html"><![CDATA[<p>如图所示内容<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447929866.png" alt="" loading="lazy"><br>
-首先，在云函数中使用 wx-server-sdk，需先调用初始化方法 init 一次，init 用于设置接下来在该云函数实例中调用云函数、数据库、文件存储时要访问的环境。</p>
-<p>例如以下代码中，<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619447957749.png" alt="" loading="lazy"><br>
-在env：中填写环境id<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1619448011651.png" alt="" loading="lazy"></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[小程序相关]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/xiao-cheng-xu-xiang-guan/">
-        </link>
-        <updated>2021-04-20T13:29:15.000Z</updated>
-        <content type="html"><![CDATA[<h2 id="1-数据绑定">1.  数据绑定</h2>
-<ol>
-<li>小程序
-<ol>
-<li>data中初始化数据</li>
-<li>修改数据： this.setData()
-<ol>
-<li>修改数据的行为始终是同步的</li>
-</ol>
-</li>
-<li>数据流：
-<ol>
-<li>单项： Model ---&gt; View</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>Vue
-<ol>
-<li>data中初始化数据</li>
-<li>修改数据: this.key = value</li>
-<li>数据流：
-<ol>
-<li>Vue是单项数据流： Model ---&gt; View</li>
-<li>Vue中实现了双向数据绑定： v-model</li>
-</ol>
-</li>
-</ol>
-</li>
-<li>React
-<ol>
-<li>state中初始化状态数据</li>
-<li>修改数据: this.setState()
-<ol>
-<li>自身钩子函数中(componentDidMount)异步的</li>
-<li>非自身的钩子函数中(定时器的回调)同步的</li>
-</ol>
-</li>
-<li>数据流：
-<ol>
-<li>单项： Model ---&gt; View</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-<h2 id="2-获取用户基本信息">2. 获取用户基本信息</h2>
-<ol>
-<li>用户未授权(首次登陆)
-<ol>
-<li>button open-type=‘getUserInfo’</li>
-</ol>
-</li>
-<li>用户已经授权(再次登陆)
-<ol>
-<li>wx.getUserInfo</li>
-</ol>
-</li>
-</ol>
-<h2 id="3-前后端交互">3. 前后端交互</h2>
-<ol>
-<li>语法: wx.request()</li>
-<li>注意点:
-<ol>
-<li>协议必须是https协议</li>
-<li>一个接口最多配置20个域名</li>
-<li>并发限制上限是10个</li>
-<li><strong>开发过程中设置不校验合法域名</strong>： 开发工具 ---&gt; 右上角详情 ----&gt; 本地设置 ---&gt; 不校验</li>
-</ol>
-</li>
-</ol>
-<h2 id="4-本地存储">4. 本地存储</h2>
-<ol>
-<li>语法: wx.setStorage() || wx.setStorageSync() || .....</li>
-<li>注意点：
-<ol>
-<li>建议存储的数据为json数据</li>
-<li>单个 key 允许存储的最大数据长度为 1MB，所有数据存储上限为 10MB</li>
-<li>属于永久存储，同H5的localStorage一样</li>
-</ol>
-</li>
-</ol>
-<h1 id="扩展内容">扩展内容</h1>
-<h2 id="1-事件流的三个阶段">1. 事件流的三个阶段</h2>
-<ol>
-<li>捕获: 从外向内</li>
-<li>执行目标阶段</li>
-<li>冒泡: 从内向外</li>
-</ol>
-<h2 id="2-事件委托">2. 事件委托</h2>
-<ol>
-<li>什么是事件委托
-<ol>
-<li>将子元素的事件委托(绑定)给父元素</li>
-</ol>
-</li>
-<li>事件委托的好处
-<ol>
-<li>减少绑定的次数</li>
-<li>后期新添加的元素也可以享用之前委托的事件</li>
-</ol>
-</li>
-<li>事件委托的原理
-<ol>
-<li>冒泡</li>
-</ol>
-</li>
-<li>触发事件的是谁
-<ol>
-<li>子元素</li>
-</ol>
-</li>
-<li>如何找到触发事件的对象
-<ol>
-<li>event.target</li>
-</ol>
-</li>
-<li>currentTarget VS target
-<ol>
-<li>currentTarget要求绑定事件的元素一定是触发事件的元素</li>
-<li>target绑定事件的元素不一定是触发事件的元素</li>
-</ol>
-</li>
-</ol>
-<h2 id="3-定义事件相关">3. 定义事件相关</h2>
-<ol>
-<li>分类
-<ol>
-<li>标准DOM事件</li>
-<li>自定义事件</li>
-</ol>
-</li>
-<li>标准DOM事件
-<ol>
-<li>举例： click，input。。。</li>
-<li>事件名固定的，事件由浏览器触发</li>
-</ol>
-</li>
-<li>自定义事件
-<ol>
-<li>绑定事件
-<ol>
-<li>事件名</li>
-<li>事件的回调</li>
-<li>订阅方: PubSub.subscribe(事件名，事件的回调)</li>
-<li>订阅方式接受数据的一方</li>
-</ol>
-</li>
-<li>触发事件
-<ol>
-<li>事件名</li>
-<li>提供事件参数对象， 等同于原生事件的event对象</li>
-<li>发布方: PubSub.publish(事件名，提供的数据)</li>
-<li>发布方是提供数据的一方</li>
-</ol>
-</li>
-</ol>
-</li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Implicit super constructor Object() is undefined for default constructor. Must define an explicit   constructor错误]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/implicit-super-constructor-object-is-undefined-for-default-constructor-must-define-an-explicit-constructor-cuo-wu/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/implicit-super-constructor-object-is-undefined-for-default-constructor-must-define-an-explicit-constructor-cuo-wu/">
-        </link>
-        <updated>2021-04-19T13:07:49.000Z</updated>
-        <summary type="html"><![CDATA[<p>今天在将另一台电脑上的javaee作业导入后class类出现问题-------Implicit super constructor Object() is undefined for default constructor. Must define an explicit   constructor错误</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>今天在将另一台电脑上的javaee作业导入后class类出现问题-------Implicit super constructor Object() is undefined for default constructor. Must define an explicit   constructor错误</p>
-<!-- more -->
-<p>创建Class类的时候突然出现冒红，为了让自己能长个记性我决定把这个问题写下来让自己能印象深刻。</p>
-<p>解决方案：把java的类库加载进去，在工程上右键选择属性-&gt;Java Build Path的Libraries-&gt;Add Library选择JRE System Library-&gt;点击Next-&gt;选择Execution environment并选择jre版本或workspace default jre(有显示的版本不是都能选的的，只有默认自带的jre和安装绑定过的选了才能起作用，这里我选择的是JavaSE-1.8)-&gt;点击Finish。</p>
 ]]></content>
     </entry>
 </feed>
