@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-12-02T05:22:26.237Z</updated>
+    <updated>2021-12-10T04:23:48.828Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,44 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[一个Android中事件分发的问题]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/yi-ge-android-zhong-shi-jian-fen-fa-de-wen-ti/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/yi-ge-android-zhong-shi-jian-fen-fa-de-wen-ti/">
+        </link>
+        <updated>2021-12-10T04:22:15.000Z</updated>
+        <content type="html"><![CDATA[<figure data-type="image" tabindex="1"><img src="https://images2015.cnblogs.com/blog/759818/201604/759818-20160411125425113-526042581.png" alt="img" loading="lazy"></figure>
+<p>一个LinerLayout里放一个Button，当点击Button的时候事件是怎么传递的？</p>
+<figure data-type="image" tabindex="2"><img src="https://images2015.cnblogs.com/blog/759818/201604/759818-20160411125425566-1337249448.png" alt="img" loading="lazy"></figure>
+<p>点击事件用MotionEvent来表示，当点击事件发生时，最先传递给Activity，用Activity的dispatchTouchEvent来进行事件的派发，具体的工作是用Activity内部的Window来完成的。Window将事件传递个decor view，decor view一般是当前几面的底层容器（setContentView所设置的View的父容器，decor view是一个FrameLayout），通过Activity.getWindow().getDecorView()可以获得。现在，事件传递到decorView了，decorView再将事件传递给LinerLayout，LinerLayout将事件传递给Button。</p>
+<p>这里要补充的是：当父容器通过 dispatchTouchEvent来传递事件时，如果他的onInterceptTouchEvent函数返回true，就不会将事件传递个子view，当然Android的还提供了一种防止父容器阻断事件的机制：只要子View调用requestDisallowInterceptTouchEvent方法，就能保证子View一定能收到点击事件。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[垃圾回收算法]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/la-ji-hui-shou-suan-fa/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/la-ji-hui-shou-suan-fa/">
+        </link>
+        <updated>2021-12-03T11:32:35.000Z</updated>
+        <content type="html"><![CDATA[<p>标记—清除算法<br>
+标记—清除算法是最基础的垃圾回收算法，后续的垃圾收集算法都是基于标记—清除算法进行改进而得到的。标记—清除算法分为“标记”和“清除”两个阶段，首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。</p>
+<p>标记—清除算法有两个主要缺点。一是效率问题，标记和清除的效率都不高，二是空间问题，标记清除之后会产生大量不连续的内存碎片，导致程序在之后的运行过程中无法为较大对象找到足够的连续内存。</p>
+<p>复制算法<br>
+官方解答：复制算法是将可用内存分成大小相等的两块，每次只使用其中的一块，当用完一块内存时，将还存活着的对象复制到另外一块内存，然后把已使用过的内存空间一次清理掉。</p>
+<p>个人解释：主要原理将内存区域划分为a，b两部分，每次只使用其中的一块。当发生垃圾回收时，先将a部分中“存活”的对象复制到b部分，然后直接清除a部分内容。接着使用b部分进行对象存储。但是直接将可用内存分成两部分，可能造成内存区域分配不够或内存浪费问题。所以JVM使用Eden区和Servivor0、Servivor1区的划分方式，占比为8 1 1.每次JVM会使用Eden和一个Servivor区存储对象，然后再发生垃圾回收时，将存活的对象一次性复制到另一块Servivor区中，接着将Eden和使用过的Servivor区擦除<br>
+一次性复制不满足时，就会启用逃生门，使用额外的内存区域去存储对象。</p>
+<p>复制算法解决了效率问题。由于每次都是对整个半区进行内存回收，因此在内存分配时不需要考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配内存即可。复制算法的优点是实现简单，运行高效，缺点是将内存缩小为了原来的一半，以及在对象存活率较高时复制操作的次数较多，导致效率降低。复制时要遍历整个GCroots</p>
+<p>标记—整理算法<br>
+标记—整理算法是根据老年代的特点提出的。标记过程与标记—清除算法一样，但后续步骤不是直接回收被标记的对象，而是让所有存活的对象都向一端移动，然后清除边界以外的内存。</p>
+<p>分代收集算法<br>
+分代收集算法根据对象的存活周期不同将内存划分为多个区域，对每个区域选用不同的垃圾回收算法。</p>
+<p>一般把 Java 堆分为新生代和老年代。在新生代中，大多数对象的生命周期都很短，因此选用复制算法。在老年代中，对象存活率高，因此选用标记—清除算法或标记—整理算法。</p>
+<p>作者：力扣 (LeetCode)<br>
+链接：https://leetcode-cn.com/leetbook/read/java-interview-highlights/en7epe/<br>
+来源：力扣（LeetCode）<br>
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Android与互联网交互的三种方式]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-yu-hu-lian-wang-jiao-hu-de-san-chong-fang-shi/</id>
@@ -254,52 +292,6 @@ this._myData = {
 <p>3、找到.ipynb文件，点击打开</p>
 <p></p>
 <p></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[微信小程序无法隐藏视频控制组件？]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-wu-fa-yin-cang-shi-pin-kong-zhi-zu-jian/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-wu-fa-yin-cang-shi-pin-kong-zhi-zu-jian/">
-        </link>
-        <updated>2021-05-10T14:52:56.000Z</updated>
-        <summary type="html"><![CDATA[<p>不知道大家有没有碰到这种情况，把video的视频当作轮播图使用时，默认弹出来的播放控件（播放/暂停按钮、播放进度、时间）是不是觉得很碍眼。那当我翻找小程序文档想解决这个问题时碰到了这个问题</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>不知道大家有没有碰到这种情况，把video的视频当作轮播图使用时，默认弹出来的播放控件（播放/暂停按钮、播放进度、时间）是不是觉得很碍眼。那当我翻找小程序文档想解决这个问题时碰到了这个问题</p>
-<!-- more -->
-<p><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658516689.png" alt="" loading="lazy"><br>
-可是我在&lt;video controls:&quot;false&quot;&gt;<video>中并没有解决这个问题<br>
-后来在论坛中找到了解决办法<br>
-将上述代码修改为controls=&quot;{{false}}&quot;就可以啦</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[微信小程序云数据库匹配数据问题]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-yun-shu-ju-ku-pi-pei-shu-ju-wen-ti/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-xin-xiao-cheng-xu-yun-shu-ju-ku-pi-pei-shu-ju-wen-ti/">
-        </link>
-        <updated>2021-05-10T13:59:26.000Z</updated>
-        <summary type="html"><![CDATA[<p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
-wx.cloud.database().collection('zzx').where({<br>
-type:&quot;单选&quot;		<br>
-}).limit(5).get()<br>
-数据库中字段如图：<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
-]]></summary>
-        <content type="html"><![CDATA[<p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
-wx.cloud.database().collection('zzx').where({<br>
-type:&quot;单选&quot;		<br>
-}).limit(5).get()<br>
-数据库中字段如图：<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
-<!-- more -->
-<p>后面题库数量增加后，如果一直提供的题目都是固定的对用户体验不是很好，所以更换为下列方法<br>
-wx.cloud.database().collection('zzx').aggregate().match({<br>
-type: '单选'<br>
-}).sample({<br>
-size:10<br>
-}).end()<br>
-.aggregate方法是微信小程序中随机得到数据库里数据的方法，.match为匹配特殊字段方法<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658096193.png" alt="" loading="lazy"></p>
 ]]></content>
     </entry>
 </feed>

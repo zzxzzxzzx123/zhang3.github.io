@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>微信小程序云数据库匹配数据问题 | 张卓欣的学习记录</title>
+<title>一个Android中事件分发的问题 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,10 +18,10 @@
 
 
 
-    <meta name="description" content="一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下
-wx.cloud.database().collection('zzx').where({
-type:&quot;单选&quot;		
-}).limit(..." />
+    <meta name="description" content="
+一个LinerLayout里放一个Button，当点击Button的时候事件是怎么传递的？
+
+点击事件用MotionEvent来表示，当点击事件发生时，最先传递给Activity，用Activity的dispatchTouchEvent来..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -100,34 +100,24 @@ type:&quot;单选&quot;
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">微信小程序云数据库匹配数据问题</h2>
-            <div class="post-date">2021-05-10</div>
+            <h2 class="post-title">一个Android中事件分发的问题</h2>
+            <div class="post-date">2021-12-10</div>
             
             <div class="post-content" v-pre>
-              <p>一开始云数据库里的内容还很少，所以一开始没有想随机获得数据库里的数据，使用的方法如下<br>
-wx.cloud.database().collection('zzx').where({<br>
-type:&quot;单选&quot;		<br>
-}).limit(5).get()<br>
-数据库中字段如图：<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620657876536.png" alt="" loading="lazy"></p>
-<!-- more -->
-<p>后面题库数量增加后，如果一直提供的题目都是固定的对用户体验不是很好，所以更换为下列方法<br>
-wx.cloud.database().collection('zzx').aggregate().match({<br>
-type: '单选'<br>
-}).sample({<br>
-size:10<br>
-}).end()<br>
-.aggregate方法是微信小程序中随机得到数据库里数据的方法，.match为匹配特殊字段方法<br>
-<img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1620658096193.png" alt="" loading="lazy"></p>
+              <figure data-type="image" tabindex="1"><img src="https://images2015.cnblogs.com/blog/759818/201604/759818-20160411125425113-526042581.png" alt="img" loading="lazy"></figure>
+<p>一个LinerLayout里放一个Button，当点击Button的时候事件是怎么传递的？</p>
+<figure data-type="image" tabindex="2"><img src="https://images2015.cnblogs.com/blog/759818/201604/759818-20160411125425566-1337249448.png" alt="img" loading="lazy"></figure>
+<p>点击事件用MotionEvent来表示，当点击事件发生时，最先传递给Activity，用Activity的dispatchTouchEvent来进行事件的派发，具体的工作是用Activity内部的Window来完成的。Window将事件传递个decor view，decor view一般是当前几面的底层容器（setContentView所设置的View的父容器，decor view是一个FrameLayout），通过Activity.getWindow().getDecorView()可以获得。现在，事件传递到decorView了，decorView再将事件传递给LinerLayout，LinerLayout将事件传递给Button。</p>
+<p>这里要补充的是：当父容器通过 dispatchTouchEvent来传递事件时，如果他的onInterceptTouchEvent函数返回true，就不会将事件传递个子view，当然Android的还提供了一种防止父容器阻断事件的机制：只要子View调用requestDisallowInterceptTouchEvent方法，就能保证子View一定能收到点击事件。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/wei-an-zhuang-wx-server-sdk-yi-lai/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/la-ji-hui-shou-suan-fa/">
                   <h3 class="post-title">
-                    未安装wx-server-sdk依赖
+                    垃圾回收算法
                   </h3>
                 </a>
               </div>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>垃圾回收算法 | 张卓欣的学习记录</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://zzxzzxzzx123.github.io/zhang3.github.io//favicon.ico?v=1639110216380">
+<link rel="stylesheet" href="https://zzxzzxzzx123.github.io/zhang3.github.io//styles/main.css">
+
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+
+    <meta name="description" content="标记—清除算法
+标记—清除算法是最基础的垃圾回收算法，后续的垃圾收集算法都是基于标记—清除算法进行改进而得到的。标记—清除算法分为“标记”和“清除”两个阶段，首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。
+标记—清除算..." />
+    <meta name="keywords" content="" />
+  </head>
+  <body>
+    <div id="app" class="main">
+
+      <div class="sidebar" :class="{ 'full-height': menuVisible }">
+  <div class="top-container" data-aos="fade-right">
+    <div class="top-header-container">
+      <a class="site-title-container" href="https://zzxzzxzzx123.github.io/zhang3.github.io/">
+        <img src="https://zzxzzxzzx123.github.io/zhang3.github.io//images/avatar.png?v=1639110216380" class="site-logo">
+        <h1 class="site-title">张卓欣的学习记录</h1>
+      </a>
+      <div class="menu-btn" @click="menuVisible = !menuVisible">
+        <div class="line"></div>
+      </div>
+    </div>
+    <div>
+      
+        
+          <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/index.html" class="site-nav">
+            首页
+          </a>
+        
+      
+        
+          <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/archives" class="site-nav">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="site-nav">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="site-nav">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+  <div class="bottom-container" data-aos="flip-up" data-aos-offset="0">
+    <div class="social-container">
+      
+        
+          <a class="social-link" href="https://github.com/zzxzzxzzx123?tab=repositories" target="_blank">
+            <i class="fab fa-github"></i>
+          </a>
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+    <div class="site-description">
+      学习使我快乐
+    </div>
+    <div class="site-footer">
+      Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+<script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css"/>
+<script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget/autoload.js"></script> | <a class="rss" href="https://zzxzzxzzx123.github.io/zhang3.github.io//atom.xml" target="_blank">RSS</a>
+    </div>
+  </div>
+</div>
+
+
+      <div class="main-container">
+        <div class="content-container" data-aos="fade-up">
+          <div class="post-detail">
+            <h2 class="post-title">垃圾回收算法</h2>
+            <div class="post-date">2021-12-03</div>
+            
+            <div class="post-content" v-pre>
+              <p>标记—清除算法<br>
+标记—清除算法是最基础的垃圾回收算法，后续的垃圾收集算法都是基于标记—清除算法进行改进而得到的。标记—清除算法分为“标记”和“清除”两个阶段，首先标记出所有需要回收的对象，在标记完成后统一回收所有被标记的对象。</p>
+<p>标记—清除算法有两个主要缺点。一是效率问题，标记和清除的效率都不高，二是空间问题，标记清除之后会产生大量不连续的内存碎片，导致程序在之后的运行过程中无法为较大对象找到足够的连续内存。</p>
+<p>复制算法<br>
+官方解答：复制算法是将可用内存分成大小相等的两块，每次只使用其中的一块，当用完一块内存时，将还存活着的对象复制到另外一块内存，然后把已使用过的内存空间一次清理掉。</p>
+<p>个人解释：主要原理将内存区域划分为a，b两部分，每次只使用其中的一块。当发生垃圾回收时，先将a部分中“存活”的对象复制到b部分，然后直接清除a部分内容。接着使用b部分进行对象存储。但是直接将可用内存分成两部分，可能造成内存区域分配不够或内存浪费问题。所以JVM使用Eden区和Servivor0、Servivor1区的划分方式，占比为8 1 1.每次JVM会使用Eden和一个Servivor区存储对象，然后再发生垃圾回收时，将存活的对象一次性复制到另一块Servivor区中，接着将Eden和使用过的Servivor区擦除<br>
+一次性复制不满足时，就会启用逃生门，使用额外的内存区域去存储对象。</p>
+<p>复制算法解决了效率问题。由于每次都是对整个半区进行内存回收，因此在内存分配时不需要考虑内存碎片等复杂情况，只要移动堆顶指针，按顺序分配内存即可。复制算法的优点是实现简单，运行高效，缺点是将内存缩小为了原来的一半，以及在对象存活率较高时复制操作的次数较多，导致效率降低。复制时要遍历整个GCroots</p>
+<p>标记—整理算法<br>
+标记—整理算法是根据老年代的特点提出的。标记过程与标记—清除算法一样，但后续步骤不是直接回收被标记的对象，而是让所有存活的对象都向一端移动，然后清除边界以外的内存。</p>
+<p>分代收集算法<br>
+分代收集算法根据对象的存活周期不同将内存划分为多个区域，对每个区域选用不同的垃圾回收算法。</p>
+<p>一般把 Java 堆分为新生代和老年代。在新生代中，大多数对象的生命周期都很短，因此选用复制算法。在老年代中，对象存活率高，因此选用标记—清除算法或标记—整理算法。</p>
+<p>作者：力扣 (LeetCode)<br>
+链接：https://leetcode-cn.com/leetbook/read/java-interview-highlights/en7epe/<br>
+来源：力扣（LeetCode）<br>
+著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+
+            </div>
+            
+            
+              <div class="next-post">
+                <div class="next">下一篇</div>
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/android-yu-hu-lian-wang-jiao-hu-de-san-chong-fang-shi/">
+                  <h3 class="post-title">
+                    Android与互联网交互的三种方式
+                  </h3>
+                </a>
+              </div>
+            
+
+            
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script type="application/javascript">
+
+AOS.init();
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+  <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>
+    hljs.initHighlightingOnLoad()
+  </script>
+
+
+
+
+
+  </body>
+</html>
