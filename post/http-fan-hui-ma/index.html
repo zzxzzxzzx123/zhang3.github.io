@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>java中== 和 equals() | 张卓欣的学习记录</title>
+<title>HTTP返回码 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,11 +18,9 @@
 
 
 
-    <meta name="description" content="执行下列程序的输出结果为（      ）
-public class Test {
-public static void main(String[] args) {
-String s1 = &quot;HelloWorld&quot;;
-St..." />
+    <meta name="description" content="HTTP 是基于客户端/服务端（C/S）的架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。
+一、HTTP 超文本传输协议
+一个HTTP &quot;客户端&quot;是一个应用程序（Web浏览器或其他任何客户端），通过..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -101,40 +99,42 @@ St..." />
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">java中== 和 equals()</h2>
-            <div class="post-date">2021-05-31</div>
+            <h2 class="post-title">HTTP返回码</h2>
+            <div class="post-date">2021-12-10</div>
             
             <div class="post-content" v-pre>
-              <p>执行下列程序的输出结果为（      ）<br>
-public class Test {<br>
-public static void main(String[] args) {<br>
-String s1 = &quot;HelloWorld&quot;;<br>
-String s2 = new String(&quot;HelloWorld&quot;);<br>
-if (s1 == s2) {<br>
-System.out.println(&quot;s1 == s2&quot;);<br>
-} else {<br>
-System.out.println(&quot;s1 != s2&quot;);<br>
-}<br>
-if (s1.equals(s2)) {<br>
-System.out.println(&quot;s1 equals s2&quot;);<br>
-} else {<br>
-System.out.println(&quot;s1 not equals s2&quot;);<br>
-}<br>
-}<br>
-}</p>
-<p>正确答案为<br>
-s1 != s2<br>
-s1 equals s2</p>
-<figure data-type="image" tabindex="1"><img src="https://zzxzzxzzx123.github.io/zhang3.github.io//post-images/1622440786573.png" alt="" loading="lazy"></figure>
+              <p>HTTP 是基于客户端/服务端（C/S）的架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。</p>
+<p>一、HTTP 超文本传输协议<br>
+一个HTTP &quot;客户端&quot;是一个应用程序（Web浏览器或其他任何客户端），通过连接到服务器达到向服务器发送一个或多个HTTP的请求的目的。<br>
+一个HTTP &quot;服务器&quot;同样也是一个应用程序（通常是一个Web服务，如Apache Web服务器或IIS服务器等），通过接收客户端的请求并向客户端发送HTTP响应数据。</p>
+<p>HTTP 使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。<br>
+HTTP 请求到服务器的请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成。</p>
+<p>HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。<br>
+HTTP1.1 新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<p>二、HTTP 请求方式：<br>
+GET     请求指定的页面信息，并返回实体主体。<br>
+HEAD    类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头<br>
+POST    向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。<br>
+PUT     从客户端向服务器传送的数据取代指定的文档的内容。<br>
+DELETE    请求服务器删除指定的页面。<br>
+CONNECT    HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。<br>
+OPTIONS    允许客户端查看服务器的性能。<br>
+TRACE    回显服务器收到的请求，主要用于测试或诊断。</p>
+<p>三、HTTP 返回状态码<br>
+1xx    处理信息，服务器收到请求，需要请求者继续执行操作；<br>
+2xx    请求成功，操作被成功接收并处理；<br>
+3xx    重定向，需要进一步的操作以完成请求；<br>
+4xx    客户端错误，请求包含语法错误或无法完成请求；<br>
+5xx    服务器错误，服务器在处理请求的过程中发生了错误；</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-var-that-this-wei-shi-me-zai-xiao-cheng-xu-chu-xian-zhe-me-pin-fan/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/yi-ge-android-zhong-shi-jian-fen-fa-de-wen-ti/">
                   <h3 class="post-title">
-                    关于 var that = this 为什么在小程序出现这么频繁
+                    一个Android中事件分发的问题
                   </h3>
                 </a>
               </div>

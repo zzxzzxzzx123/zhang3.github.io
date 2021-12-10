@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://zzxzzxzzx123.github.io/zhang3.github.io/</id>
     <title>张卓欣的学习记录</title>
-    <updated>2021-12-10T04:24:43.052Z</updated>
+    <updated>2021-12-10T04:27:20.477Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://zzxzzxzzx123.github.io/zhang3.github.io/"/>
     <link rel="self" href="https://zzxzzxzzx123.github.io/zhang3.github.io/atom.xml"/>
@@ -10,6 +10,37 @@
     <logo>https://zzxzzxzzx123.github.io/zhang3.github.io/images/avatar.png</logo>
     <icon>https://zzxzzxzzx123.github.io/zhang3.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, 张卓欣的学习记录</rights>
+    <entry>
+        <title type="html"><![CDATA[HTTP返回码]]></title>
+        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/http-fan-hui-ma/</id>
+        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/http-fan-hui-ma/">
+        </link>
+        <updated>2021-12-10T04:25:59.000Z</updated>
+        <content type="html"><![CDATA[<p>HTTP 是基于客户端/服务端（C/S）的架构模型，通过一个可靠的链接来交换信息，是一个无状态的请求/响应协议。</p>
+<p>一、HTTP 超文本传输协议<br>
+一个HTTP &quot;客户端&quot;是一个应用程序（Web浏览器或其他任何客户端），通过连接到服务器达到向服务器发送一个或多个HTTP的请求的目的。<br>
+一个HTTP &quot;服务器&quot;同样也是一个应用程序（通常是一个Web服务，如Apache Web服务器或IIS服务器等），通过接收客户端的请求并向客户端发送HTTP响应数据。</p>
+<p>HTTP 使用统一资源标识符（Uniform Resource Identifiers, URI）来传输数据和建立连接。<br>
+HTTP 请求到服务器的请求消息包括以下格式：请求行（request line）、请求头部（header）、空行和请求数据四个部分组成。</p>
+<p>HTTP1.0 定义了三种请求方法： GET, POST 和 HEAD方法。<br>
+HTTP1.1 新增了五种请求方法：OPTIONS, PUT, DELETE, TRACE 和 CONNECT 方法。</p>
+<p>二、HTTP 请求方式：<br>
+GET     请求指定的页面信息，并返回实体主体。<br>
+HEAD    类似于get请求，只不过返回的响应中没有具体的内容，用于获取报头<br>
+POST    向指定资源提交数据进行处理请求（例如提交表单或者上传文件）。数据被包含在请求体中。POST请求可能会导致新的资源的建立和/或已有资源的修改。<br>
+PUT     从客户端向服务器传送的数据取代指定的文档的内容。<br>
+DELETE    请求服务器删除指定的页面。<br>
+CONNECT    HTTP/1.1协议中预留给能够将连接改为管道方式的代理服务器。<br>
+OPTIONS    允许客户端查看服务器的性能。<br>
+TRACE    回显服务器收到的请求，主要用于测试或诊断。</p>
+<p>三、HTTP 返回状态码<br>
+1xx    处理信息，服务器收到请求，需要请求者继续执行操作；<br>
+2xx    请求成功，操作被成功接收并处理；<br>
+3xx    重定向，需要进一步的操作以完成请求；<br>
+4xx    客户端错误，请求包含语法错误或无法完成请求；<br>
+5xx    服务器错误，服务器在处理请求的过程中发生了错误；</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[一个Android中事件分发的问题]]></title>
         <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/yi-ge-android-zhong-shi-jian-fen-fa-de-wen-ti/</id>
@@ -266,32 +297,6 @@ this._myData = {
 <p>那当我们在tabbar页面已经有跳转了后，再使用wx.navigateTo时就会碰到问题</p>
 <p>这种情况下我们可以使用这个方法 wx.switchTab(Object object)<br>
 其功能为跳转到 tabBar 页面，并关闭其他所有非 tabBar 页面</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[关于.ipynb文件]]></title>
-        <id>https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-ipynb-wen-jian/</id>
-        <link href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/guan-yu-ipynb-wen-jian/">
-        </link>
-        <updated>2021-05-12T14:15:15.000Z</updated>
-        <summary type="html"><![CDATA[<p>一、简介：</p>
-<p>.ipynb文件即为Jupyter Notebook，是一个交互式笔记本，支持运行 40 多种编程语言。</p>
-<p>Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。它的主要用途是：数据清理和转换，数值模拟，统计建模，机器学习等，Jupyter Notebook 与 IPython终端 共享同一个内核。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>一、简介：</p>
-<p>.ipynb文件即为Jupyter Notebook，是一个交互式笔记本，支持运行 40 多种编程语言。</p>
-<p>Jupyter Notebook 的本质是一个 Web 应用程序，便于创建和共享文学化程序文档，支持实时代码，数学方程，可视化和 markdown。它的主要用途是：数据清理和转换，数值模拟，统计建模，机器学习等，Jupyter Notebook 与 IPython终端 共享同一个内核。</p>
-<!-- more -->
-<p>二、如何在windows下打开一个.ipynb文件<br>
-　　1、使用pip安装jupyter</p>
-<p>pip install jupyter<br>
-　<br>
-　　2、使用命令进入web程序界面<br>
-　　在命令行输入：</p>
-<p>jupyter notebook</p>
-<p>3、找到.ipynb文件，点击打开</p>
-<p></p>
-<p></p>
 ]]></content>
     </entry>
 </feed>
