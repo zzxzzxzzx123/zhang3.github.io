@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>写给自己 | 张卓欣的学习记录</title>
+<title>Java 中 “1000==1000” 为 false，而 ”100==100“ 为 true | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,9 +18,8 @@
 
 
 
-    <meta name="description" content="我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。
-" />
+    <meta name="description" content="两个引用指向同一个对象，用表示它们是相等的。如果两个引用指向不同的对象，用表示它们是不相等的，即使它们的内容相同。
+查看Integer.java 类，你会发现有一个内部私有类，IntegerCache.java，它缓存了从-128到127之..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -99,21 +98,29 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">写给自己</h2>
-            <div class="post-date">2021-03-18</div>
+            <h2 class="post-title">Java 中 “1000==1000” 为 false，而 ”100==100“ 为 true</h2>
+            <div class="post-date">2021-12-10</div>
             
             <div class="post-content" v-pre>
-              <p>我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀<br>
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。</p>
+              <p>两个引用指向同一个对象，用<mark>表示它们是相等的。如果两个引用指向不同的对象，用</mark>表示它们是不相等的，即使它们的内容相同。</p>
+<p>查看Integer.java 类，你会发现有一个内部私有类，IntegerCache.java，它缓存了从-128到127之间的所有的整数对象。</p>
+<p>Integer c = 100;//手写代码    Integer i = Integer.valueOf(100);//编译器处理</p>
+<p>public static Integer valueOf(int i) {<br>
+if (i &gt;= IntegerCache.low &amp;&amp; i<br>
+return IntegerCache.cache[i + (-IntegerCache.low)];<br>
+return new Integer(i);<br>
+}</p>
+<p>如果值的范围在-128到127之间，它就从高速缓存返回实例。<br>
+所以Integer c = 100, d = 100;指向了同一个对象。</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/hello-gridea/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/http-fan-hui-ma/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    HTTP返回码
                   </h3>
                 </a>
               </div>

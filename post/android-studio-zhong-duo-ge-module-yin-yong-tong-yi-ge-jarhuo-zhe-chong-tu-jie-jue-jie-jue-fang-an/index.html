@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>写给自己 | 张卓欣的学习记录</title>
+<title>Android Studio 中多个module引用同一个jar（或者冲突解决）解决方案 | 张卓欣的学习记录</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
@@ -18,9 +18,11 @@
 
 
 
-    <meta name="description" content="我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。
-" />
+    <meta name="description" content="在解决这些错误之前，让我们先了解下关于module的几种依赖方式的区别（直接看解决方案请跳过）
+compile
+compile是对所有的build type以及favlors都会参与编译并且打包到最终的apk文件中。
+Provided
+Pr..." />
     <meta name="keywords" content="" />
   </head>
   <body>
@@ -99,21 +101,36 @@
       <div class="main-container">
         <div class="content-container" data-aos="fade-up">
           <div class="post-detail">
-            <h2 class="post-title">写给自己</h2>
-            <div class="post-date">2021-03-18</div>
+            <h2 class="post-title">Android Studio 中多个module引用同一个jar（或者冲突解决）解决方案</h2>
+            <div class="post-date">2021-12-10</div>
             
             <div class="post-content" v-pre>
-              <p>我的名字叫张卓欣，现在是一名大二的软件工程专业的学生😀<br>
-这是我的第一篇博客，希望我能坚持把我的学习经历在这里进行分享。</p>
+              <p>在解决这些错误之前，让我们先了解下关于module的几种依赖方式的区别（直接看解决方案请跳过）</p>
+<p>compile<br>
+compile是对所有的build type以及favlors都会参与编译并且打包到最终的apk文件中。</p>
+<p>Provided<br>
+Provided是对所有的build type以及favlors只在编译时使用，类似eclipse中的external-libs,只参与编译，不打包到最终apk。</p>
+<p>APK<br>
+只会打包到apk文件中，而不参与编译，所以不能再代码中直接调用jar中的类或方法，否则在编译时会报错</p>
+<p>Test compile<br>
+Test compile 仅仅是针对单元测试代码的编译编译以及最终打包测试apk时有效，而对正常的debug或者<br>
+release apk包不起作用。</p>
+<p>Debug compile<br>
+Debug compile 仅仅针对debug模式的编译和最终的debug apk打包</p>
+<p>Release compile<br>
+Release compile 仅仅针对Release 模式的编译和最终的Release apk打包。</p>
+<p>解决方法：<br>
+1.第一个module不发生任何改变。<br>
+2.设置另一个module引入jar的方式为Provided，这样改module引入的jar在编译时候可以使用，即代码不会报错，生成的apk不会包含该jar。在apk运行时候第一个module的jar会共享该module使用，也就是说compile依赖方式是对共所有的调用，虽然在编译时候不能被调用。（除了引用module的项目外）</p>
 
             </div>
             
             
               <div class="next-post">
                 <div class="next">下一篇</div>
-                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/hello-gridea/">
+                <a href="https://zzxzzxzzx123.github.io/zhang3.github.io/post/java-zhong-10001000-wei-falseer-100100-wei-true/">
                   <h3 class="post-title">
-                    Hello Gridea
+                    Java 中 “1000==1000” 为 false，而 ”100==100“ 为 true
                   </h3>
                 </a>
               </div>
